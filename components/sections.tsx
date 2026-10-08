@@ -269,8 +269,8 @@ function LogoRow({ items, reverse = false }: { items: typeof clients; reverse?: 
     <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
       <ul
         className={`flex w-max items-center gap-5 py-2 hover:[animation-play-state:paused] ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
-        // ~4.5s per logo keeps the scroll calm regardless of how many logos there are
-        style={{ animationDuration: `${items.length * 4.5}s` }}
+        // ~12s per logo keeps the scroll calm regardless of how many logos there are
+        style={{ animationDuration: `${items.length * 12}s` }}
       >
         {row.map((c, i) => (
           <li
