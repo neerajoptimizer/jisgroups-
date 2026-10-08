@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     url: site.url,
     title: "JIS Business Solutions — Security, Housekeeping & Facility Management Across India",
     description: site.description,
-    images: [{ url: "/images/hero-banner.jpg", width: 945, height: 702, alt: site.name }],
+    images: [{ url: "/images/hero-banner.jpg", width: 925, height: 698, alt: site.name }],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },

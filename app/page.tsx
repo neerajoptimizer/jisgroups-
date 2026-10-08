@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import {
+  BannerStrip,
   ClientMarquee,
   Faq,
   HowItWorks,
@@ -94,8 +95,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="container-x relative z-10 -mt-px pt-10">
+      <div className="container-x relative z-10 -mt-px space-y-10 pt-10 pb-16">
         <StatsBar />
+        <BannerStrip />
       </div>
 
       <ClientMarquee />

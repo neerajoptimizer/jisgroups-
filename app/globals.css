@@ -21,6 +21,7 @@
   --color-ink-950: #0b0b0d;
 
   --animate-marquee: marquee 90s linear infinite;
+  --animate-marquee-reverse: marquee 90s linear infinite reverse;
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }

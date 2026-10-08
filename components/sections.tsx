@@ -12,7 +12,7 @@ import {
   Quote,
   Rocket,
 } from "lucide-react";
-import { clients, site, stats, steps, testimonials, whyChoose } from "@/lib/site";
+import { banners, clients, site, stats, steps, testimonials, whyChoose } from "@/lib/site";
 import { services, type Service } from "@/lib/services";
 import { industries } from "@/lib/industries";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo";
@@ -52,7 +52,7 @@ export function PageHero({
   title,
   subtitle,
   crumbs,
-  image = "/images/hero-banner.jpg",
+  image = "/images/gallery/jis-team.jpg",
   eyebrow,
   children,
 }: {
@@ -263,45 +263,89 @@ export function HowItWorks() {
   );
 }
 
-export function ClientMarquee({ title = "Some of our clients" }: { title?: string }) {
-  const row = [...clients, ...clients];
+function LogoRow({ items, reverse = false }: { items: typeof clients; reverse?: boolean }) {
+  const row = [...items, ...items];
   return (
-    <section className="section border-y border-ink-100 bg-white !py-14">
-      <div className="container-x">
-        <p className="text-center font-display text-2xl font-semibold text-ink-900 sm:text-3xl">{title}</p>
+    <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+      <ul
+        className={`flex w-max items-center gap-5 py-2 hover:[animation-play-state:paused] ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+        // ~4.5s per logo keeps the scroll calm regardless of how many logos there are
+        style={{ animationDuration: `${items.length * 4.5}s` }}
+      >
+        {row.map((c, i) => (
+          <li
+            key={`${c.name}-${i}`}
+            aria-hidden={i >= items.length}
+            className="flex h-24 w-48 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-ink-100 bg-white p-2 shadow-sm"
+          >
+            <Image src={c.logo} alt={i < items.length ? `${c.name} logo` : ""} width={180} height={90} className="max-h-20 w-auto object-contain" />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export function ClientMarquee({ title = "Some of our clients" }: { title?: string }) {
+  const half = Math.ceil(clients.length / 2);
+  return (
+    <section className="section border-y border-ink-100 bg-ink-50 !py-14">
+      <div className="container-x flex flex-col items-center gap-2 text-center">
+        <p className="font-display text-2xl font-semibold text-ink-900 sm:text-3xl">{title}</p>
+        <p className="text-sm text-ink-500">{clients.length}+ organisations across corporate, hospitality, education, government and real estate</p>
       </div>
-      <div className="relative mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-        <ul className="flex w-max animate-marquee items-center gap-14 hover:[animation-play-state:paused]">
-          {row.map((c, i) => (
-            <li key={`${c.name}-${i}`} aria-hidden={i >= clients.length} className="flex h-20 w-44 items-center justify-center">
-              <Image src={c.logo} alt={i < clients.length ? `${c.name} logo` : ""} width={176} height={80} className="max-h-20 w-auto object-contain grayscale transition hover:grayscale-0" />
-            </li>
-          ))}
-        </ul>
+      <div className="mt-10 space-y-4">
+        <LogoRow items={clients.slice(0, half)} />
+        <LogoRow items={clients.slice(half)} reverse />
+      </div>
+      <div className="mt-8 text-center">
+        <Link href="/clients" className="inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:underline">
+          View all clients <ArrowRight className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   );
 }
 
 export function TestimonialBlock() {
-  const t = testimonials[0];
   return (
     <section className="section">
       <div className="container-x">
-        <SectionHeading eyebrow="Testimonials" title="Trusted by Businesses Nationwide" />
-        <figure className="relative mx-auto mt-12 max-w-4xl overflow-hidden rounded-3xl bg-ink-900 p-10 text-white sm:p-14">
-          <Quote className="absolute -top-2 right-6 h-32 w-32 text-white/5" aria-hidden="true" />
-          <blockquote className="relative font-display text-xl leading-relaxed sm:text-2xl">&ldquo;{t.quote}&rdquo;</blockquote>
-          <figcaption className="mt-8 flex items-center gap-4">
-            <span className="h-0.5 w-10 bg-brand-600" />
-            <span>
-              <span className="block font-semibold">{t.author}</span>
-              <span className="text-sm text-white/60">{t.org}</span>
-            </span>
-          </figcaption>
-        </figure>
+        <SectionHeading eyebrow="Testimonials" title="Trusted by Businesses Nationwide" text="What admin heads, facility managers and security leaders say about working with JIS." />
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {testimonials.map((t, i) => (
+            <figure
+              key={t.org}
+              className={`relative flex flex-col overflow-hidden rounded-3xl p-8 sm:p-10 ${i === 0 || i === 3 ? "bg-ink-900 text-white" : "border border-ink-100 bg-white"}`}
+            >
+              <Quote className={`absolute top-6 right-6 h-16 w-16 ${i === 0 || i === 3 ? "text-white/10" : "text-brand-100"}`} aria-hidden="true" />
+              <blockquote className={`relative flex-1 pr-14 font-display text-lg leading-relaxed sm:text-xl ${i === 0 || i === 3 ? "text-white" : "text-ink-900"}`}>
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-8 flex items-center gap-4">
+                <Image src={t.photo} alt="" width={56} height={56} className="h-14 w-14 rounded-full object-cover ring-2 ring-brand-600" />
+                <span>
+                  <span className="block font-semibold">{t.author}</span>
+                  <span className={`text-sm ${i === 0 || i === 3 ? "text-white/60" : "text-ink-500"}`}>{t.org}</span>
+                </span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
+  );
+}
+
+export function BannerStrip() {
+  return (
+    <div className="grid gap-5 md:grid-cols-3">
+      {banners.map((b) => (
+        <Link key={b.src} href="/get-a-quote" className="group relative block aspect-[925/698] overflow-hidden rounded-2xl shadow-lg shadow-ink-900/10">
+          <Image src={b.src} alt={b.alt} fill sizes="(min-width:768px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
+        </Link>
+      ))}
+    </div>
   );
 }
 

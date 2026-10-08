@@ -2,7 +2,7 @@ export const site = {
   name: "JIS Business Solutions Pvt. Ltd.",
   shortName: "JIS Business Solutions",
   brand: "JIS Group",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.jisgroup.in").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://jisgroups.com").replace(/\/$/, ""),
   tagline: "Security, Housekeeping & Facility Management Services Across India",
   description:
     "JIS Business Solutions Pvt. Ltd. is a leading PAN India facility management and manpower outsourcing company offering security guards, housekeeping, lift operators, admin support and facility management staff for corporates and institutions. Get a customised staffing proposal within 24 hours.",
@@ -38,14 +38,42 @@ export const nav = [
 export const quantityOptions = ["1 – 5", "6 – 15", "16 – 50", "51 – 100", "100+"];
 
 export const clients = [
-  { name: "Great Gatsby Club", logo: "/images/clients/great-gatsby-club.png" },
   { name: "Godrej Properties", logo: "/images/clients/godrej-properties.png" },
   { name: "Shipra Group", logo: "/images/clients/shipra-group.png" },
-  { name: "LPS Global School", logo: "/images/clients/lps-global-school.png" },
-  { name: "Marque Impex", logo: "/images/clients/marque-impex.png" },
-  { name: "Institutional Client", logo: "/images/clients/institutional-client.png" },
   { name: "Indian Institute of Foreign Trade (IIFT)", logo: "/images/clients/iift.png" },
+  { name: "DRDO", logo: "/images/clients/drdo.png" },
+  { name: "IIT Roorkee", logo: "/images/clients/iit-roorkee.png" },
+  { name: "IIT Jodhpur", logo: "/images/clients/iit-jodhpur.png" },
+  { name: "IIT Jammu", logo: "/images/clients/iit-jammu.png" },
+  { name: "Haldiram's", logo: "/images/clients/haldirams.png" },
+  { name: "Bikanervala", logo: "/images/clients/bikanervala.png" },
+  { name: "Theobroma", logo: "/images/clients/theobroma.png" },
+  { name: "OYO Rooms", logo: "/images/clients/oyo-rooms.png" },
+  { name: "OYO Campus", logo: "/images/clients/oyo-campus.png" },
+  { name: "UFLEX", logo: "/images/clients/uflex.png" },
+  { name: "Citelum (Groupe EDF)", logo: "/images/clients/citelum.png" },
+  { name: "HollySys", logo: "/images/clients/hollysys.png" },
+  { name: "Nuberg", logo: "/images/clients/nuberg.png" },
+  { name: "Nuberg EPC", logo: "/images/clients/nuberg-epc.png" },
+  { name: "Nirala Aspire", logo: "/images/clients/nirala-aspire.png" },
+  { name: "Innov8 Coworking", logo: "/images/clients/innov8.png" },
+  { name: "Zolo", logo: "/images/clients/zolo.png" },
+  { name: "Easyrewardz", logo: "/images/clients/easyrewardz.png" },
+  { name: "HELM360", logo: "/images/clients/helm360.png" },
+  { name: "IDC Technologies", logo: "/images/clients/idc-technologies.png" },
+  { name: "CIPL", logo: "/images/clients/cipl.png" },
   { name: "Radiate", logo: "/images/clients/radiate.png" },
+  { name: "Marque Impex", logo: "/images/clients/marque-impex.png" },
+  { name: "Peachtree", logo: "/images/clients/peachtree.png" },
+  { name: "Europa Park", logo: "/images/clients/europa-park.png" },
+  { name: "Pujashree", logo: "/images/clients/pujashree.png" },
+  { name: "Urban Harvest", logo: "/images/clients/urban-harvest.png" },
+  { name: "M&B Footwear", logo: "/images/clients/mb-footwear.png" },
+  { name: "SAMS Kappal College", logo: "/images/clients/sams-kappal-college.png" },
+  { name: "LPS Global School", logo: "/images/clients/lps-global-school.png" },
+  { name: "Dolphin Kids", logo: "/images/clients/dolphin-kids.png" },
+  { name: "Great Gatsby Club", logo: "/images/clients/great-gatsby-club.png" },
+  { name: "Institutional Client", logo: "/images/clients/institutional-client.png" },
 ];
 
 export const gallery = [
@@ -61,11 +89,37 @@ export const gallery = [
 
 export const testimonials = [
   {
+    quote: "Reliable, professional, and responsive — JIS ensures our property stays secure and well-maintained.",
+    author: "Admin Head",
+    org: "Leading IT Company, Gurgaon",
+    photo: "/images/testimonials/2.jpg",
+  },
+  {
+    quote: "We've been working with JIS for over 3 years — their staff is disciplined and well-trained.",
+    author: "Facility Manager",
+    org: "5-Star Hotel Chain",
+    photo: "/images/testimonials/3.jpg",
+  },
+  {
     quote:
       "JIS has been an invaluable partner. Their quick response time to any issue and the professionalism of their on-site team give us complete peace of mind.",
     author: "Operations Director",
     org: "Major Retail Outlet, Bangalore",
+    photo: "/images/testimonials/1.jpg",
   },
+  {
+    quote:
+      "The transition to JIS was seamless. Their commitment to training and modern security protocols is clear, and we've seen a measurable improvement in our facility's safety.",
+    author: "Head of Security",
+    org: "International Manufacturing Plant, Pune",
+    photo: "/images/testimonials/4.jpg",
+  },
+];
+
+export const banners = [
+  { src: "/images/banners/staffing-proposal.jpg", alt: "Get a customised staffing proposal within 24 hours — security, housekeeping, lift operators, admin support" },
+  { src: "/images/banners/trusted-across-india.jpg", alt: "10+ years trusted by corporates across India — background-verified, uniformed staff deployed in days" },
+  { src: "/images/banners/free-quote.jpg", alt: "Tired of security and housekeeping headaches? One call, verified staff, PAN India — get a free quote today" },
 ];
 
 export const whyChoose = [

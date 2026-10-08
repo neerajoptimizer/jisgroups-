@@ -54,7 +54,6 @@ Without either, submissions are logged to the server console only.
 
 ## Before going live
 
-- Replace `public/images/logo.png` with a high-resolution logo (current one is extracted from a screenshot)
 - Set `NEXT_PUBLIC_SITE_URL` to the real domain and add the site to Google Search Console (`NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`), then submit `/sitemap.xml`
 - Confirm the PIN code (the old site shows both 201307 and 201309) in `lib/site.ts`
 - Update the Google Business Profile with the same name, address and phone (NAP) used on the site
