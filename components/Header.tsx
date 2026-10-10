@@ -133,15 +133,15 @@ export function Header() {
         }`}
       >
         <div className="container-x flex h-20 items-center justify-between gap-4">
-          <Link href="/" className="flex items-center gap-3" aria-label={`${site.name} — Home`}>
+          <Link href="/" className="flex shrink-0 items-center gap-3" aria-label={`${site.name} — Home`}>
             <Image src="/images/logo.png" alt="JIS logo" width={56} height={56} priority className="h-14 w-14" />
             <span className="leading-tight">
-              <span className="block font-display text-base font-extrabold tracking-tight text-ink-900 sm:text-lg">JIS Business Solutions</span>
+              <span className="block font-display text-sm leading-tight font-extrabold tracking-tight text-ink-900 sm:whitespace-nowrap sm:text-lg">JIS Groups Business Solutions</span>
               <span className="hidden text-[11px] font-medium tracking-wider text-ink-500 uppercase sm:block">Security · Housekeeping · Facility</span>
             </span>
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:block">
+          <nav aria-label="Main" className="hidden xl:block">
             <ul className="flex items-center gap-1">
               {nav.map((item) => {
                 const menu = "menu" in item ? (item.menu as MenuKey) : null;
@@ -182,7 +182,7 @@ export function Header() {
             </Link>
             <button
               type="button"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-ink-100 text-ink-900 lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-ink-100 text-ink-900 xl:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -194,7 +194,7 @@ export function Header() {
         </div>
 
         {open && (
-          <div id="mobile-menu" className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto border-t border-ink-100 bg-white lg:hidden">
+          <div id="mobile-menu" className="fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto border-t border-ink-100 bg-white xl:hidden">
             <nav aria-label="Mobile" className="container-x py-4">
               <ul className="divide-y divide-ink-100">
                 {nav.map((item) => {
