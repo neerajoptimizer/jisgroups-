@@ -9,6 +9,7 @@
 <meta property="og:title" content="JI PAY — Bank MQR Payments for iGaming">
 <meta property="og:description" content="High-volume processing, T+0 USDT settlement, instant player credit and 24×7 support.">
 <meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' gradientUnits='userSpaceOnUse' x1='4' y1='2' x2='44' y2='46'%3E%3Cstop offset='0' stop-color='%23ffe7a3'/%3E%3Cstop offset='.5' stop-color='%23f5c451'/%3E%3Cstop offset='1' stop-color='%23c98a1c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M24 2l19 11v22L24 46 5 35V13z' fill='%230a1633' stroke='url(%23g)' stroke-width='2.5'/%3E%3Cg stroke='url(%23g)' stroke-width='5' stroke-linecap='round' fill='none'%3E%3Cpath d='M17 19v12'/%3E%3Cpath d='M29 19v12c0 4-3 6.5-7 6.5'/%3E%3C/g%3E%3Ccircle cx='17' cy='12.5' r='2.8' fill='url(%23g)'/%3E%3Ccircle cx='29' cy='12.5' r='2.8' fill='url(%23g)'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -45,9 +46,18 @@ h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;letter-spacing:-.02em;line
 /* Nav */
 .nav{position:sticky;top:0;z-index:50;background:#050b1fcc;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #ffffff0d}
 .nav .wrap{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
-.logo{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em}
-.logo-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold2),#ff9f43);color:#1a1300;font-weight:800;font-size:15px;box-shadow:0 6px 20px #f5c45140}
-.logo b{color:var(--gold)}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:44px;height:44px;flex:0 0 auto;filter:drop-shadow(0 6px 16px #f5c45155);transition:transform .3s}
+.logo:hover .logo-mark{transform:rotate(-8deg) scale(1.05)}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-word{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:24px;letter-spacing:.04em;color:#fff}
+.logo-word b{font-weight:700;background:linear-gradient(100deg,#ffe7a3,#f5c451 45%,#d9971f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo-tag{margin-top:5px;font-size:8.5px;font-weight:700;letter-spacing:.32em;color:#8f9ec4;text-transform:uppercase}
+.logo.lg .logo-mark{width:58px;height:58px}
+.logo.lg .logo-word{font-size:30px}
+.logo.lg .logo-tag{font-size:10px}
+.vip-mark{width:40px;height:40px}
+.hero-seal{position:absolute;right:26px;bottom:-26px;width:92px;height:92px;opacity:.9;filter:drop-shadow(0 16px 30px #0009);z-index:2}
 .links{display:flex;gap:30px;font-size:14px;color:var(--soft)}
 .links a:hover{color:#fff}
 .nav .btn{padding:11px 16px;font-size:14px}
@@ -234,6 +244,9 @@ footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);fon
   .nav .wrap{height:64px}
   .nav .btn span{display:none}
   .nav .btn{padding:10px 12px}
+  .logo-mark{width:38px;height:38px}
+  .logo-word{font-size:21px}
+  .logo-tag{font-size:7.5px;letter-spacing:.26em}
   .hero{padding:44px 0 60px}
   .lead{font-size:16px}
   .cta-row .btn{width:100%}
@@ -257,18 +270,37 @@ footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);fon
   .row.th{display:none}
   form{grid-template-columns:1fr;padding:22px}
   .final-box{padding:38px 22px}
-  .mobile-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;box-shadow:0 12px 40px #000a}
+  .mobile-cta{display:flex;opacity:0;pointer-events:none;transform:translateY(20px);transition:opacity .25s,transform .25s;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;box-shadow:0 12px 40px #000a}
   body{padding-bottom:76px}
+  .mobile-cta.show{opacity:1;pointer-events:auto;transform:none}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="jpGold" gradientUnits="userSpaceOnUse" x1="4" y1="2" x2="44" y2="46"><stop offset="0" stop-color="#ffe7a3"/><stop offset=".5" stop-color="#f5c451"/><stop offset="1" stop-color="#c98a1c"/></linearGradient>
+    <linearGradient id="jpNavy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#18306a"/><stop offset="1" stop-color="#070f29"/></linearGradient>
+    <linearGradient id="jpShine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <symbol id="jp-mark" viewBox="0 0 48 48">
+      <path d="M24 2l19 11v22L24 46 5 35V13z" fill="url(#jpNavy)" stroke="url(#jpGold)" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M24 5.5l16 9.3v18.4L24 42.5 8 33.2V14.8z" fill="none" stroke="#f5c451" stroke-opacity=".25" stroke-width=".8"/>
+      <g stroke="url(#jpGold)" stroke-width="4.6" stroke-linecap="round" fill="none">
+        <path d="M17.5 19.5v11.5"/>
+        <path d="M29.5 19.5v11.8c0 4-3 6.4-7 6.4"/>
+      </g>
+      <circle cx="17.5" cy="13" r="2.7" fill="url(#jpGold)"/>
+      <circle cx="29.5" cy="13" r="2.7" fill="url(#jpGold)"/>
+      <path d="M24 2l19 11v6L24 9 5 19v-6z" fill="url(#jpShine)"/>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- ========= NAV ========= -->
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="JI PAY home"><span class="logo-mark">JI</span><span>JI <b>PAY</b></span></a>
+    <a class="logo" href="#top" aria-label="JI PAY home"><svg class="logo-mark" role="img" aria-label="JI PAY logo"><use href="#jp-mark"/></svg><span class="logo-text"><span class="logo-word">JI <b>PAY</b></span><span class="logo-tag">Premium Payments</span></span></a>
     <nav class="links" aria-label="Primary">
       <a href="#how">How it works</a>
       <a href="#features">Features</a>
@@ -307,7 +339,7 @@ footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);fon
 
     <div class="visual" aria-hidden="true">
       <div class="panel">
-        <div class="p-head"><b>JI PAY · Merchant Console</b><span class="live">LIVE</span></div>
+        <div class="p-head"><b style="display:flex;align-items:center;gap:8px"><svg width="22" height="22" aria-hidden="true"><use href="#jp-mark"/></svg>JI PAY · Merchant Console</b><span class="live">LIVE</span></div>
         <div class="p-sub">Today's collections</div>
         <div class="p-big">₹84,62,300 <span class="p-up">▲ 18.4%</span></div>
         <svg class="spark" viewBox="0 0 400 92" preserveAspectRatio="none">
@@ -423,7 +455,7 @@ footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);fon
       <a class="btn btn-gold" href="#enquiry">Enable VIP Limits →</a>
     </div>
     <div class="card-vip">
-      <div class="top"><span>JI PAY · VIP</span><div class="chip-ic"></div></div>
+      <div class="top"><span style="display:flex;align-items:center;gap:10px"><svg class="vip-mark" aria-hidden="true"><use href="#jp-mark"/></svg>JI PAY · VIP</span><div class="chip-ic"></div></div>
       <div class="limit"><span>Single transaction</span><b>₹5,00,000</b></div>
       <div class="limit"><span>Daily limit / player</span><b>₹20,00,000</b></div>
       <div class="foot"><i>✓</i> Instant credit for eligible VIP deposits</div>
@@ -532,6 +564,7 @@ footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);fon
 <div class="final">
   <div class="wrap">
     <div class="final-box">
+      <svg aria-hidden="true" style="position:relative;width:72px;height:72px;margin:0 auto 18px;filter:drop-shadow(0 12px 30px #f5c45155)"><use href="#jp-mark"/></svg>
       <h2>Ready to power your cashier with <span class="grad">JI PAY</span>?</h2>
       <p>High-volume Bank MQR collections, instant player credit and T+0 USDT settlement — live with a dedicated team behind you.</p>
       <div class="cta-row">
@@ -546,7 +579,7 @@ footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);fon
 <footer>
   <div class="wrap">
     <div class="foot-top">
-      <a class="logo" href="#top"><span class="logo-mark">JI</span><span>JI <b>PAY</b></span></a>
+      <a class="logo lg" href="#top" aria-label="JI PAY home"><svg class="logo-mark" role="img" aria-label="JI PAY logo"><use href="#jp-mark"/></svg><span class="logo-text"><span class="logo-word">JI <b>PAY</b></span><span class="logo-tag">Premium Payments</span></span></a>
       <div class="foot-links">
         <a href="#how">How it works</a><a href="#features">Features</a><a href="#vip">VIP</a><a href="#pricing">Commercials</a><a href="#enquiry">Contact</a>
       </div>
@@ -561,6 +594,13 @@ footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);fon
 (function(){
   var TG = 'gatewaysupport';
   document.getElementById('yr').textContent = new Date().getFullYear();
+  var mcta = document.querySelector('.mobile-cta'), hero = document.querySelector('.hero'), enq = document.getElementById('enquiry');
+  function onScroll(){
+    var y = window.scrollY, past = y > hero.offsetHeight - 120;
+    var r = enq.getBoundingClientRect(), inForm = r.top < window.innerHeight && r.bottom > 0;
+    mcta.classList.toggle('show', past && !inForm);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
   var form = document.getElementById('enquiryForm');
   form.addEventListener('submit', function(e){
     e.preventDefault();
