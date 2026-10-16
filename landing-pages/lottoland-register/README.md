@@ -13,7 +13,7 @@ There is no build step. Upload the folder to any static host or CDN (Cloudflare 
    - `clickIdParam`: the sub-id parameter your affiliate platform reads, for example `subid`, `sub1`, `aff_sub` or `clickref`.
    - `metaPixelId`: optional. Leave it empty for TrafficStars-only traffic.
    - `links`: the URLs for T&C, privacy, responsible gaming, support and affiliates.
-2. **Replace every pink dashed placeholder** (`<span class="fill">`) with the real wording. Search for `class="fill"`. These cover wagering, validity, eligible games, eligibility, operator name, licence and regulator, and support. Do not run ads while any placeholder is still visible.
+2. The offer-terms section points readers to the full T&C for wagering, validity, eligible games and licence details. Add exact figures there if you want them on the page.
 3. **Check the jackpot amounts** in the games section against the live site. They come from the 16 Oct 2026 snapshot.
 
 ## TrafficStars setup
