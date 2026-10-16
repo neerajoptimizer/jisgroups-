@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JI PAY | Bank MQR Payments for iGaming</title>
+<meta name="description" content="JI PAY — premium Bank MQR payment solution for iGaming operators. Up to ₹1 Crore daily volume, T+0 USDT settlement, instant cashier credit, VIP high-limit deposits and 24×7 support.">
+<meta name="theme-color" content="#050b1f">
+<meta property="og:title" content="JI PAY — Bank MQR Payments for iGaming">
+<meta property="og:description" content="High-volume processing, T+0 USDT settlement, instant player credit and 24×7 support.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050b1f;--bg2:#08122e;--card:#0c1838;--card2:#10204a;--line:#1c2d5c;--line2:#27407a;
+  --ink:#eef3ff;--soft:#b6c3e3;--muted:#7d8db5;
+  --gold:#f5c451;--gold2:#ffdd85;--cyan:#2fd4ff;--green:#22d39a;--violet:#7c5cff;
+  --light:#f5f8ff;--lightcard:#ffffff;--dark-ink:#0a1633;--dark-muted:#55658a;--lightline:#e2e9f7;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+.wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;letter-spacing:-.02em;line-height:1.1;margin:0}
+.grad{background:linear-gradient(100deg,var(--gold2),var(--gold) 40%,#ff9f43);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);background:#f5c45114;border:1px solid #f5c45133;padding:7px 12px;border-radius:999px}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #22d39a2a;animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px #22d39a10}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:15px;border-radius:12px;padding:15px 22px;border:0;cursor:pointer;font-family:inherit;transition:transform .15s,box-shadow .15s,background .15s}
+.btn svg{width:19px;height:19px;fill:currentColor}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1300;box-shadow:0 10px 30px #f5c45140}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 36px #f5c45160}
+.btn-ghost{border:1px solid var(--line2);color:var(--ink);background:#ffffff08}
+.btn-ghost:hover{border-color:var(--cyan);background:#2fd4ff10}
+.btn-tg{background:#229ed9;color:#fff;box-shadow:0 10px 26px #229ed940}
+.btn-tg:hover{transform:translateY(-2px);background:#1c8dc4}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:#050b1fcc;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid #ffffff0d}
+.nav .wrap{height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:22px;letter-spacing:-.02em}
+.logo-mark{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold2),#ff9f43);color:#1a1300;font-weight:800;font-size:15px;box-shadow:0 6px 20px #f5c45140}
+.logo b{color:var(--gold)}
+.links{display:flex;gap:30px;font-size:14px;color:var(--soft)}
+.links a:hover{color:#fff}
+.nav .btn{padding:11px 16px;font-size:14px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:70px 0 90px}
+.hero:before{content:"";position:absolute;inset:-200px -200px auto auto;width:720px;height:720px;background:radial-gradient(circle,#7c5cff38,transparent 62%);pointer-events:none}
+.hero:after{content:"";position:absolute;left:-220px;bottom:-280px;width:640px;height:640px;background:radial-gradient(circle,#2fd4ff22,transparent 62%);pointer-events:none}
+.grid-bg{position:absolute;inset:0;background-image:linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 30%,transparent 75%);pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,5.6vw,68px);margin:22px 0 20px}
+.lead{font-size:18px;color:var(--soft);max-width:580px;margin:0 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.chips span{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#dbe4ff;background:#ffffff0a;border:1px solid #ffffff14;padding:8px 13px;border-radius:999px}
+.chips span:before{content:"";width:16px;height:16px;border-radius:50%;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.2l2.6 2.6L12 5.4' fill='none' stroke='%23052a1f' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.hero-note{margin-top:22px;font-size:13px;color:var(--muted)}
+
+/* Hero visual */
+.visual{position:relative;min-height:470px}
+.panel{position:absolute;inset:20px 0 auto 40px;background:linear-gradient(160deg,#122352,#0a1636);border:1px solid var(--line2);border-radius:22px;padding:22px;box-shadow:0 40px 80px #0009,inset 0 1px 0 #ffffff14}
+.p-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.p-head b{font-size:14px}
+.live{font-size:11px;font-weight:700;color:var(--green);display:flex;align-items:center;gap:6px}
+.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+.p-big{font-family:"Space Grotesk",sans-serif;font-size:36px;font-weight:700;letter-spacing:-.02em}
+.p-sub{font-size:12px;color:var(--muted);margin-bottom:12px}
+.p-up{color:var(--green);font-weight:700;font-size:12px;margin-left:8px}
+.spark{height:92px;margin:6px 0 16px}
+.p-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.p-stats div{background:#ffffff08;border:1px solid #ffffff10;border-radius:12px;padding:11px}
+.p-stats small{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.p-stats b{font-size:15px}
+.tx{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid #ffffff0f;font-size:13px}
+.tx span:first-child{color:var(--soft)}
+.ok{font-size:11px;font-weight:700;color:var(--green);background:#22d39a1a;padding:3px 9px;border-radius:99px}
+.usdt{font-size:11px;font-weight:700;color:var(--cyan);background:#2fd4ff1a;padding:3px 9px;border-radius:99px}
+.float{position:absolute;background:#0f1d44f2;border:1px solid var(--line2);border-radius:16px;padding:14px 16px;box-shadow:0 20px 50px #0008;display:flex;gap:12px;align-items:center;backdrop-filter:blur(8px)}
+.float .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-weight:800}
+.float b{display:block;font-size:14px}
+.float small{font-size:11px;color:var(--muted)}
+.f1{left:0;bottom:38px;animation:bob 5s ease-in-out infinite}
+.f1 .ic{background:#22d39a22;color:var(--green)}
+.f2{right:-14px;top:-4px;animation:bob 6s ease-in-out infinite reverse}
+.f2 .ic{background:#f5c45122;color:var(--gold)}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+/* Stat strip */
+.strip{background:var(--bg2);border-top:1px solid #ffffff0d;border-bottom:1px solid #ffffff0d}
+.strip .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+.strip div{padding:30px 18px;border-right:1px solid #ffffff0d;text-align:center}
+.strip div:last-child{border:0}
+.strip b{display:block;font-family:"Space Grotesk",sans-serif;font-size:30px;letter-spacing:-.02em}
+.strip span{font-size:13px;color:var(--muted)}
+
+/* Sections */
+section{padding:96px 0}
+.head{max-width:720px;margin:0 auto 52px;text-align:center}
+.head h2{font-size:clamp(30px,4vw,46px);margin:16px 0 14px}
+.head p{color:var(--soft);font-size:17px;margin:0}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px}
+.step:before{counter-increment:s;content:"0" counter(s);font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:13px;color:var(--gold);background:#f5c45114;border:1px solid #f5c45133;border-radius:8px;padding:4px 8px}
+.step h3{font-size:19px;margin:18px 0 8px}
+.step p{margin:0;font-size:14px;color:var(--soft)}
+.step:not(:last-child):after{content:"→";position:absolute;right:-15px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--bg);border:1px solid var(--line2);display:grid;place-items:center;font-size:13px;color:var(--gold);z-index:2}
+
+/* Features (light) */
+.light{background:var(--light);color:var(--dark-ink)}
+.light .head p{color:var(--dark-muted)}
+.light .tag{color:#9a6b00;background:#f5c4512a;border-color:#e9b6404d}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:var(--lightcard);border:1px solid var(--lightline);border-radius:var(--r);padding:28px;transition:transform .2s,box-shadow .2s}
+.feat:hover{transform:translateY(-4px);box-shadow:0 22px 50px #0a16331a}
+.feat .ic{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#0a1633,#1b2f66);color:var(--gold);margin-bottom:20px}
+.feat .ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:20px;margin-bottom:9px}
+.feat p{margin:0;font-size:14.5px;color:var(--dark-muted)}
+.feat .kpi{display:inline-block;margin-top:16px;font-size:12px;font-weight:700;color:#0b6b4b;background:#dff7ee;padding:5px 10px;border-radius:99px}
+
+/* VIP */
+.vip{position:relative;overflow:hidden}
+.vip:before{content:"";position:absolute;right:-200px;top:-100px;width:600px;height:600px;background:radial-gradient(circle,#f5c4511f,transparent 60%)}
+.vip-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.vip h2{font-size:clamp(30px,4vw,46px);margin:16px 0 16px}
+.vip p.lead{font-size:17px}
+.vip-list{list-style:none;padding:0;margin:0 0 30px;display:grid;gap:12px}
+.vip-list li{display:flex;gap:12px;color:var(--soft);font-size:15px}
+.vip-list li:before{content:"✦";color:var(--gold)}
+.card-vip{position:relative;border-radius:24px;padding:34px;background:linear-gradient(145deg,#1d1606,#3a2b07 45%,#120d03);border:1px solid #f5c45155;box-shadow:0 40px 90px #0008,inset 0 1px 0 #ffe7a533}
+.card-vip .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:34px}
+.card-vip .top span{font-size:11px;letter-spacing:.2em;font-weight:700;color:var(--gold2)}
+.chip-ic{width:46px;height:34px;border-radius:7px;background:linear-gradient(135deg,#ffe08a,#c9962a);box-shadow:inset 0 0 0 1px #0003}
+.limit{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #f5c45126}
+.limit span{color:#e6d3a5;font-size:14px}
+.limit b{font-family:"Space Grotesk",sans-serif;font-size:34px;color:#fff;letter-spacing:-.02em}
+.limit:last-of-type{border:0}
+.card-vip .foot{margin-top:22px;display:flex;align-items:center;gap:12px;font-size:14px;color:#f3e3bd}
+.card-vip .foot i{width:30px;height:30px;border-radius:50%;background:var(--green);color:#052a1f;display:grid;place-items:center;font-style:normal;font-weight:800}
+
+/* Commercial table */
+.table{max-width:880px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.row{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;padding:18px 28px;border-bottom:1px solid var(--line);align-items:center}
+.row:last-child{border:0}
+.row:nth-child(even){background:#ffffff05}
+.row span{color:var(--muted);font-size:14px}
+.row b{font-size:16px;font-weight:600}
+.row b em{font-style:normal;color:var(--gold)}
+.row.th{background:#f5c45110!important;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.row.th span,.row.th b{color:var(--gold2);font-size:12px;font-weight:700}
+.fine{max-width:880px;margin:18px auto 0;font-size:12px;color:var(--muted);text-align:center}
+
+/* Why */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.why div{padding:26px;border-radius:var(--r);background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line)}
+.why b{display:block;font-family:"Space Grotesk",sans-serif;font-size:19px;margin:12px 0 8px}
+.why p{margin:0;font-size:14px;color:var(--soft)}
+.why .em{font-size:26px}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:var(--lightcard);border:1px solid var(--lightline);border-radius:14px;padding:4px 22px}
+.faq summary{cursor:pointer;list-style:none;font-weight:700;font-size:16px;padding:16px 0;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:22px;line-height:1;color:#9a6b00;transition:transform .2s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{margin:0 0 18px;color:var(--dark-muted);font-size:15px}
+
+/* Enquiry */
+.enq-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+.enq-copy h2{font-size:clamp(30px,4vw,44px);margin:16px 0 16px}
+.enq-copy p{color:var(--soft);font-size:16px;margin:0 0 24px}
+.contact-card{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:12px}
+.contact-card .ic{width:46px;height:46px;border-radius:12px;background:#229ed922;color:#3fb5ec;display:grid;place-items:center}
+.contact-card .ic svg{width:22px;height:22px;fill:currentColor}
+.contact-card small{display:block;color:var(--muted);font-size:12px}
+.contact-card b{font-size:16px}
+form{background:linear-gradient(160deg,#0f1d44,#0a1532);border:1px solid var(--line2);border-radius:24px;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:16px;box-shadow:0 30px 70px #0007}
+.f{display:flex;flex-direction:column;gap:7px}
+.f.full{grid-column:1/-1}
+label{font-size:13px;font-weight:600;color:#d5def7}
+input,select,textarea{width:100%;font:inherit;font-size:15px;color:var(--ink);background:#060e26;border:1px solid var(--line2);border-radius:11px;padding:13px 14px;outline:none;transition:border-color .15s,box-shadow .15s}
+textarea{resize:vertical;min-height:92px}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%237d8db5' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px;padding-right:38px}
+input::placeholder,textarea::placeholder{color:#5a6a93}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px #f5c45126}
+form .btn{grid-column:1/-1;width:100%;font-size:16px;padding:17px}
+.form-note{grid-column:1/-1;margin:0;font-size:12px;color:var(--muted);text-align:center}
+.form-ok{grid-column:1/-1;display:none;margin:0;padding:12px 14px;border-radius:11px;background:#22d39a1a;border:1px solid #22d39a44;color:#9ff0d2;font-size:14px}
+
+/* Final CTA */
+.final{padding:0 0 96px}
+.final-box{position:relative;overflow:hidden;border-radius:28px;padding:56px;text-align:center;background:linear-gradient(120deg,#1a1240,#0d2a5e 55%,#0a3d6b);border:1px solid var(--line2)}
+.final-box:before{content:"";position:absolute;inset:auto -120px -220px auto;width:520px;height:520px;background:radial-gradient(circle,#f5c45133,transparent 60%)}
+.final-box h2{position:relative;font-size:clamp(28px,4vw,44px);margin-bottom:14px}
+.final-box p{position:relative;color:var(--soft);font-size:17px;max-width:600px;margin:0 auto 28px}
+.final-box .cta-row{position:relative;justify-content:center}
+
+footer{border-top:1px solid #ffffff0d;padding:40px 0 30px;color:var(--muted);font-size:13px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:24px}
+.foot-links{display:flex;gap:24px;flex-wrap:wrap}
+.foot-links a:hover{color:#fff}
+.disclaimer{border-top:1px solid #ffffff0d;padding-top:22px;font-size:12px;line-height:1.7;color:#64739a}
+
+/* Sticky mobile CTA */
+.mobile-cta{display:none}
+
+@media(max-width:1000px){
+  .links{display:none}
+  .hero-grid,.vip-grid,.enq-grid{grid-template-columns:1fr}
+  .visual{max-width:560px;width:100%;margin:0 auto}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step:after{display:none}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .why{grid-template-columns:repeat(2,1fr)}
+  .strip .wrap{grid-template-columns:repeat(3,1fr)}
+  .strip div:nth-child(3){border:0}
+  .strip div:nth-child(n+4){border-top:1px solid #ffffff0d}
+}
+@media(max-width:620px){
+  .wrap{width:calc(100% - 32px)}
+  .nav .wrap{height:64px}
+  .nav .btn span{display:none}
+  .nav .btn{padding:10px 12px}
+  .hero{padding:44px 0 60px}
+  .lead{font-size:16px}
+  .cta-row .btn{width:100%}
+  .visual{min-height:420px}
+  .panel{inset:28px 0 auto 0;padding:18px}
+  .p-big{font-size:28px}
+  .f1{left:-4px;bottom:0}
+  .f2{right:-4px;top:-6px}
+  .strip .wrap{grid-template-columns:repeat(2,1fr)}
+  .strip div{border-right:0!important;border-top:1px solid #ffffff0d}
+  .strip div:nth-child(-n+2){border-top:0}
+  .strip div:last-child{grid-column:1/-1}
+  .strip b{font-size:24px}
+  section{padding:68px 0}
+  .head{margin-bottom:36px}
+  .head p{font-size:15px}
+  .steps,.features,.why{grid-template-columns:1fr}
+  .card-vip{padding:24px}
+  .limit b{font-size:27px}
+  .row{grid-template-columns:1fr;gap:4px;padding:15px 18px}
+  .row.th{display:none}
+  form{grid-template-columns:1fr;padding:22px}
+  .final-box{padding:38px 22px}
+  .mobile-cta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:60;box-shadow:0 12px 40px #000a}
+  body{padding-bottom:76px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- ========= NAV ========= -->
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="JI PAY home"><span class="logo-mark">JI</span><span>JI <b>PAY</b></span></a>
+    <nav class="links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#vip">VIP</a>
+      <a href="#pricing">Commercials</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-gold" href="#enquiry"><span>Get Onboarded</span> →</a>
+  </div>
+</header>
+
+<main id="top">
+<!-- ========= HERO ========= -->
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag"><i></i> Bank MQR · Built for iGaming</span>
+      <h1>Deposits that land <span class="grad">instantly.</span><br>Settlement that lands <span class="grad">today.</span></h1>
+      <p class="lead">JI PAY is a premium bank-based MQR payment solution for iGaming operators — high-volume UPI collections, instant cashier crediting and T+0 settlement in USDT, backed by a 24×7 dedicated team.</p>
+      <div class="chips">
+        <span>₹1 Crore / day capacity</span>
+        <span>T+0 USDT settlement</span>
+        <span>Instant player credit</span>
+        <span>24×7 support</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#enquiry">Start Onboarding →</a>
+        <a class="btn btn-tg" href="https://t.me/gatewaysupport" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 3.2 18.5 20c-.25 1.18-.91 1.47-1.84.91l-5.1-3.76-2.46 2.37c-.27.27-.5.5-1.02.5l.36-5.18 9.43-8.52c.41-.36-.09-.56-.64-.2L5.57 13.4.54 11.83c-1.1-.34-1.12-1.1.23-1.63L20.44 2.6c.91-.33 1.7.22 1.36.6Z"/></svg>
+          Chat on Telegram
+        </a>
+      </div>
+      <p class="hero-note">UPI Intent &amp; Quasi-Intent · VIP limits up to ₹5L per transaction</p>
+    </div>
+
+    <div class="visual" aria-hidden="true">
+      <div class="panel">
+        <div class="p-head"><b>JI PAY · Merchant Console</b><span class="live">LIVE</span></div>
+        <div class="p-sub">Today's collections</div>
+        <div class="p-big">₹84,62,300 <span class="p-up">▲ 18.4%</span></div>
+        <svg class="spark" viewBox="0 0 400 92" preserveAspectRatio="none">
+          <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f5c451" stop-opacity=".35"/><stop offset="1" stop-color="#f5c451" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0 78 L40 70 L80 72 L120 52 L160 58 L200 40 L240 46 L280 28 L320 34 L360 16 L400 8 L400 92 L0 92Z" fill="url(#g)"/>
+          <polyline points="0,78 40,70 80,72 120,52 160,58 200,40 240,46 280,28 320,34 360,16 400,8" fill="none" stroke="#f5c451" stroke-width="3" stroke-linejoin="round"/>
+        </svg>
+        <div class="p-stats">
+          <div><small>Settlement</small><b>T+0</b></div>
+          <div><small>Credit</small><b>Instant</b></div>
+          <div><small>Rail</small><b>UPI MQR</b></div>
+        </div>
+        <div class="tx"><span>Deposit · Player #48213</span><span class="ok">Credited</span><b>₹25,000</b></div>
+        <div class="tx"><span>VIP Deposit · Player #10087</span><span class="ok">Credited</span><b>₹4,80,000</b></div>
+        <div class="tx"><span>Settlement batch</span><span class="usdt">USDT</span><b>T+0</b></div>
+      </div>
+      <div class="float f1"><span class="ic">✓</span><div><b>Player credited</b><small>Cashier updated instantly</small></div></div>
+      <div class="float f2"><span class="ic">₮</span><div><b>Settled in USDT</b><small>Same-day, T+0</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= STAT STRIP ========= -->
+<div class="strip">
+  <div class="wrap">
+    <div><b>₹1 Cr</b><span>Daily processing</span></div>
+    <div><b>T+0</b><span>USDT settlement</span></div>
+    <div><b>Instant</b><span>Cashier credit</span></div>
+    <div><b>₹20 L</b><span>VIP daily limit</span></div>
+    <div><b>24×7</b><span>Dedicated support</span></div>
+  </div>
+</div>
+
+<!-- ========= HOW IT WORKS ========= -->
+<section id="how">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">How it works</span>
+      <h2>From player tap to <span class="grad">USDT in your wallet</span></h2>
+      <p>A clean, four-step flow designed to keep deposits fast for players and cash flow predictable for operators.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Player deposits</h3><p>Player chooses UPI in your cashier and pays via Intent or Quasi-Intent flow on their phone.</p></div>
+      <div class="step"><h3>Bank MQR processes</h3><p>The payment routes through a bank-based merchant QR rail built for high volume.</p></div>
+      <div class="step"><h3>Instant credit</h3><p>On confirmation, the deposit is credited to the player's balance in your cashier instantly.</p></div>
+      <div class="step"><h3>T+0 settlement</h3><p>Your collections settle the same day in USDT, as per agreed settlement and conversion terms.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= FEATURES ========= -->
+<section class="light" id="features">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Key features &amp; benefits</span>
+      <h2>Everything your cashier needs to scale</h2>
+      <p>High-volume capacity, fast settlement and round-the-clock support — in one payment partner.</p>
+    </div>
+    <div class="features">
+      <article class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12l5 5L21 4"/></svg></div>
+        <h3>High success rates</h3>
+        <p>Engineered for maximum deposit success, with a provider-committed success target subject to agreed operational terms and transaction eligibility.</p>
+        <span class="kpi">Up to 100% target*</span>
+      </article>
+      <article class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+        <h3>₹1 Crore daily volume</h3>
+        <p>Dedicated daily processing capacity of ₹1 crore, so peak-hour traffic and big match days don't hit a ceiling.</p>
+        <span class="kpi">₹1 Cr / day</span>
+      </article>
+      <article class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>T+0 settlement in USDT</h3>
+        <p>Same-day settlement in USDT, as per agreed settlement and conversion terms — no waiting days for your working capital.</p>
+        <span class="kpi">Same-day</span>
+      </article>
+      <article class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Instant player credit</h3>
+        <p>Deposits are credited to the player's account in your cashier instantly — fewer abandoned sessions, more play.</p>
+        <span class="kpi">Real-time</span>
+      </article>
+      <article class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0116 0v2"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/></svg></div>
+        <h3>24×7 dedicated support</h3>
+        <p>Round-the-clock technical and operational assistance from a team that knows your integration.</p>
+        <span class="kpi">Always on</span>
+      </article>
+      <article class="feat">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></div>
+        <h3>Multiple payment flows</h3>
+        <p>Supports UPI Intent and Quasi-Intent flows to match how your players prefer to pay on mobile.</p>
+        <span class="kpi">Intent + Quasi-Intent</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========= VIP ========= -->
+<section class="vip" id="vip">
+  <div class="wrap vip-grid">
+    <div>
+      <span class="tag">VIP player solution</span>
+      <h2>High limits for your <span class="grad">highest-value players</span></h2>
+      <p class="lead">A dedicated high-limit payment facility for VIP players — faster, seamless deposits without the friction of low caps.</p>
+      <ul class="vip-list">
+        <li>₹5 Lakhs single-transaction limit</li>
+        <li>₹20 Lakhs daily deposit limit per VIP player</li>
+        <li>Rapid cashier crediting for eligible transactions</li>
+        <li>Priority handling by the support desk</li>
+      </ul>
+      <a class="btn btn-gold" href="#enquiry">Enable VIP Limits →</a>
+    </div>
+    <div class="card-vip">
+      <div class="top"><span>JI PAY · VIP</span><div class="chip-ic"></div></div>
+      <div class="limit"><span>Single transaction</span><b>₹5,00,000</b></div>
+      <div class="limit"><span>Daily limit / player</span><b>₹20,00,000</b></div>
+      <div class="foot"><i>✓</i> Instant credit for eligible VIP deposits</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= COMMERCIALS ========= -->
+<section id="pricing" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Commercial summary</span>
+      <h2>The offer, at a glance</h2>
+      <p>Clear terms you can take to your finance and ops teams today.</p>
+    </div>
+    <div class="table" role="table" aria-label="Commercial summary">
+      <div class="row th" role="row"><span role="columnheader">Parameter</span><b role="columnheader">JI PAY offering</b></div>
+      <div class="row" role="row"><span role="cell">Payment method</span><b role="cell">Bank MQR</b></div>
+      <div class="row" role="row"><span role="cell">Daily processing volume</span><b role="cell"><em>₹1 Crore</em></b></div>
+      <div class="row" role="row"><span role="cell">Settlement</span><b role="cell"><em>T+0</em> in USDT</b></div>
+      <div class="row" role="row"><span role="cell">Player cashier credit</span><b role="cell">Instant</b></div>
+      <div class="row" role="row"><span role="cell">Support</span><b role="cell">24×7 dedicated</b></div>
+      <div class="row" role="row"><span role="cell">Payment options</span><b role="cell">UPI Intent &amp; Quasi-Intent</b></div>
+      <div class="row" role="row"><span role="cell">VIP single transaction</span><b role="cell"><em>₹5 Lakhs</em></b></div>
+      <div class="row" role="row"><span role="cell">VIP daily limit</span><b role="cell"><em>₹20 Lakhs</em> per player</b></div>
+    </div>
+    <p class="fine">*Figures are proposed provider terms, subject to onboarding, transaction eligibility and the final written commercial agreement.</p>
+  </div>
+</section>
+
+<!-- ========= WHY ========= -->
+<section id="why">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Why JI PAY</span>
+      <h2>Built for operators who can't afford downtime</h2>
+      <p>High-volume capacity, fast settlement, VIP-friendly limits and continuous support — combined in one partner.</p>
+    </div>
+    <div class="why">
+      <div><span class="em">⚡</span><b>Scale on demand</b><p>₹1 Cr daily capacity keeps your cashier open through peak traffic.</p></div>
+      <div><span class="em">₮</span><b>Cash flow, today</b><p>T+0 USDT settlement keeps working capital moving.</p></div>
+      <div><span class="em">👑</span><b>VIP ready</b><p>High single and daily limits for your most valuable players.</p></div>
+      <div><span class="em">🛟</span><b>Never alone</b><p>24×7 tech &amp; ops support whenever an issue appears.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= FAQ ========= -->
+<section class="light" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">FAQ</span>
+      <h2>Questions operators ask</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>What is a Bank MQR payment solution?</summary><p>A bank-based merchant QR payment rail that lets players pay with UPI apps. JI PAY supports both UPI Intent (the UPI app opens directly) and Quasi-Intent flows.</p></details>
+      <details><summary>How fast are deposits credited to players?</summary><p>Deposits are credited to the player's account in your cashier instantly once the payment is confirmed.</p></details>
+      <details><summary>How and when do I get settled?</summary><p>Settlement is T+0 — same day — in USDT, according to the agreed settlement and conversion terms in your commercial agreement.</p></details>
+      <details><summary>What volumes can you handle?</summary><p>Daily processing capacity of ₹1 crore. VIP players get a ₹5 lakh single-transaction limit and a ₹20 lakh daily limit per player.</p></details>
+      <details><summary>How do I get started?</summary><p>Submit the enquiry form below or message us on Telegram. Our team will share onboarding requirements, integration documentation and final commercial terms.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ========= ENQUIRY ========= -->
+<section id="enquiry">
+  <div class="wrap enq-grid">
+    <div class="enq-copy">
+      <span class="tag">Get onboarded</span>
+      <h2>Talk to the <span class="grad">JI PAY</span> team</h2>
+      <p>Share a few details and our team will get back with onboarding steps, integration docs and your commercial proposal.</p>
+      <a class="contact-card" href="https://t.me/gatewaysupport" target="_blank" rel="noopener noreferrer">
+        <span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 3.2 18.5 20c-.25 1.18-.91 1.47-1.84.91l-5.1-3.76-2.46 2.37c-.27.27-.5.5-1.02.5l.36-5.18 9.43-8.52c.41-.36-.09-.56-.64-.2L5.57 13.4.54 11.83c-1.1-.34-1.12-1.1.23-1.63L20.44 2.6c.91-.33 1.7.22 1.36.6Z"/></svg></span>
+        <div><small>Fastest response · Telegram</small><b>@gatewaysupport</b></div>
+      </a>
+      <div class="contact-card">
+        <span class="ic" style="background:#22d39a22;color:var(--green)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10.4l3.3 2-1 1.6L11 13V6h2z"/></svg></span>
+        <div><small>Availability</small><b>24 hours · 7 days a week</b></div>
+      </div>
+    </div>
+
+    <form id="enquiryForm" novalidate>
+      <div class="f"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" placeholder="Your name" required maxlength="100"></div>
+      <div class="f"><label for="company">Company / Brand *</label><input id="company" name="company" autocomplete="organization" placeholder="Your brand" required maxlength="100"></div>
+      <div class="f"><label for="phone">Phone / WhatsApp *</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required maxlength="25" pattern="[+0-9() .\-]{7,25}"></div>
+      <div class="f"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required maxlength="150"></div>
+      <div class="f"><label for="tg">Telegram username</label><input id="tg" name="telegram" placeholder="@username" maxlength="40"></div>
+      <div class="f"><label for="volume">Expected daily volume</label>
+        <select id="volume" name="volume">
+          <option value="">Select range</option>
+          <option>Below ₹10 Lakhs</option>
+          <option>₹10 – 50 Lakhs</option>
+          <option>₹50 Lakhs – ₹1 Crore</option>
+          <option>Above ₹1 Crore</option>
+        </select>
+      </div>
+      <div class="f full"><label for="msg">Requirements</label><textarea id="msg" name="message" maxlength="600" placeholder="Website, current provider, VIP needs, go-live timeline…"></textarea></div>
+      <button class="btn btn-gold" type="submit">Submit Enquiry →</button>
+      <p class="form-ok" id="formOk" role="status">Telegram is opening with your enquiry prepared — just hit send to complete it.</p>
+      <p class="form-note">Your details open in Telegram, ready to send to our team. Never share passwords or payment credentials.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ========= FINAL CTA ========= -->
+<div class="final">
+  <div class="wrap">
+    <div class="final-box">
+      <h2>Ready to power your cashier with <span class="grad">JI PAY</span>?</h2>
+      <p>High-volume Bank MQR collections, instant player credit and T+0 USDT settlement — live with a dedicated team behind you.</p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#enquiry">Start Onboarding →</a>
+        <a class="btn btn-ghost" href="https://t.me/gatewaysupport" target="_blank" rel="noopener noreferrer">Message @gatewaysupport</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="logo" href="#top"><span class="logo-mark">JI</span><span>JI <b>PAY</b></span></a>
+      <div class="foot-links">
+        <a href="#how">How it works</a><a href="#features">Features</a><a href="#vip">VIP</a><a href="#pricing">Commercials</a><a href="#enquiry">Contact</a>
+      </div>
+    </div>
+    <p class="disclaimer">© <span id="yr">2026</span> JI PAY. All figures and service descriptions are proposed provider terms and are subject to onboarding, KYC/compliance checks, transaction eligibility, bank and payment-network rules, settlement and conversion terms, and a final written commercial agreement. Services are offered only to operators eligible under the laws applicable in their jurisdiction.</p>
+  </div>
+</footer>
+
+<a class="btn btn-gold mobile-cta" href="#enquiry">Get Onboarded →</a>
+
+<script>
+(function(){
+  var TG = 'gatewaysupport';
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var form = document.getElementById('enquiryForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    var v = function(id){ return document.getElementById(id).value.trim(); };
+    var lines = [
+      'JI PAY — New Onboarding Enquiry',
+      'Name: ' + v('name'),
+      'Company: ' + v('company'),
+      'Phone: ' + v('phone'),
+      'Email: ' + v('email')
+    ];
+    if (v('tg')) lines.push('Telegram: ' + v('tg'));
+    if (v('volume')) lines.push('Daily volume: ' + v('volume'));
+    if (v('msg')) lines.push('Requirements: ' + v('msg'));
+    var url = 'https://t.me/share/url?url=' + encodeURIComponent('https://t.me/' + TG) + '&text=' + encodeURIComponent(lines.join('\n'));
+    window.open(url, '_blank', 'noopener,noreferrer');
+    document.getElementById('formOk').style.display = 'block';
+  });
+})();
+</script>
+</body>
+</html>
