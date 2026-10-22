@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+
+  --color-sky-brand: #1fa8f0;
+  --color-blue-brand: #1677e8;
+  --color-pink-brand: #ff2f9a;
+  --color-night-950: #05060c;
+  --color-night-900: #0a0d1a;
+  --color-night-800: #121729;
+  --color-night-700: #1d2340;
+
+  --animate-marquee: marquee 40s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-night-950 text-slate-300 antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-display text-white tracking-tight;
+  }
+  ::selection {
+    @apply bg-pink-brand text-white;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-sky-brand;
+  }
+}
+
+@utility container-x {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+@utility section {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+@utility text-gradient {
+  @apply bg-gradient-to-r from-sky-brand via-blue-brand to-pink-brand bg-clip-text text-transparent;
+}
+@utility eyebrow {
+  @apply inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-pink-brand uppercase;
+}
+@utility card {
+  @apply rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
