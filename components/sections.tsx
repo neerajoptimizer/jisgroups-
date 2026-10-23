@@ -18,6 +18,7 @@ import { industries } from "@/lib/industries";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo";
 import { Icon } from "./Icon";
 import { JsonLd } from "./JsonLd";
+import { TrustStrip } from "./TrustBadges";
 
 export type Crumb = { name: string; path: string };
 
@@ -84,6 +85,7 @@ export function PageHero({
             </a>
           </div>
         )}
+        <TrustStrip light className="mt-8 border-t border-white/10 pt-6" />
       </div>
     </section>
   );

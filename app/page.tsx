@@ -19,6 +19,7 @@ import { gallery, site } from "@/lib/site";
 import { cities, regions } from "@/lib/locations";
 import { posts } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
+import { TrustBadges, TrustStrip } from "@/components/TrustBadges";
 
 export const metadata = buildMetadata({
   title: "Security, Housekeeping & Facility Management Services in India | JIS Group",
@@ -84,6 +85,7 @@ export default function HomePage() {
                 <Phone className="h-4 w-4" /> Call {site.phone}
               </a>
             </div>
+            <TrustStrip light className="mt-10 border-t border-white/10 pt-6" />
           </div>
           <div className="lg:col-span-5">
             <div className="rounded-3xl border border-white/10 bg-ink-800/90 p-6 shadow-2xl backdrop-blur sm:p-8">
@@ -97,6 +99,10 @@ export default function HomePage() {
 
       <div className="container-x relative z-10 -mt-px space-y-10 pt-10 pb-16">
         <StatsBar />
+        <div>
+          <p className="mb-4 text-center text-xs font-semibold tracking-[0.18em] text-ink-500 uppercase">Why organisations trust JIS Group</p>
+          <TrustBadges />
+        </div>
         <BannerStrip />
       </div>
 

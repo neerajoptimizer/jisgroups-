@@ -38,6 +38,20 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
+/**
+ * Licences & registrations shown as badges (footer, About page). Only entries with a number are
+ * displayed — fill these in with the company's real numbers.
+ */
+export const registrations: { label: string; number: string }[] = [
+  { label: "PSARA Licence", number: "" },
+  { label: "GSTIN", number: "" },
+  { label: "CIN", number: "" },
+  { label: "EPF Code", number: "" },
+  { label: "ESIC Code", number: "" },
+  { label: "Udyam (MSME)", number: "" },
+  { label: "ISO 9001:2015", number: "" },
+];
+
 export const quantityOptions = ["1 – 5", "6 – 15", "16 – 50", "51 – 100", "100+"];
 
 export const clients = [

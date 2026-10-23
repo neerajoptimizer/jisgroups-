@@ -6,6 +6,7 @@ import { services } from "@/lib/services";
 import { industries } from "@/lib/industries";
 import { featuredCities } from "@/lib/locations";
 import { WhatsAppIcon } from "./WhatsApp";
+import { RegistrationBadges, TrustStrip } from "./TrustBadges";
 
 const company = [
   { href: "/about", label: "About Us" },
@@ -118,6 +119,13 @@ export function Footer() {
               { href: "/locations", label: "View all cities →" },
             ]}
           />
+        </div>
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="container-x flex flex-col gap-4 py-6">
+          <TrustStrip light />
+          <RegistrationBadges dark />
         </div>
       </div>
 

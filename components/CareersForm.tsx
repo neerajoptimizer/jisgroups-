@@ -6,6 +6,7 @@ import { Loader2, Send } from "lucide-react";
 import { careerRoles } from "@/lib/careers";
 import { Captcha, type CaptchaHandle } from "./Captcha";
 import { trackLead } from "@/lib/track";
+import { FormTrust } from "./TrustBadges";
 
 export function CareersForm() {
   const router = useRouter();
@@ -87,6 +88,9 @@ export function CareersForm() {
         <button type="submit" className="btn-primary" disabled={status === "loading"}>
           {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />} Apply Now
         </button>
+        <div className="mt-3">
+          <FormTrust />
+        </div>
       </div>
     </form>
   );

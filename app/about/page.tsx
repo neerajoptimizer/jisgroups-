@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Eye, Handshake, Target } from "lucide-react";
 import { ClientMarquee, CtaBand, HowItWorks, PageHero, SectionHeading, StatsBar, TestimonialBlock, WhyChoose } from "@/components/sections";
 import { buildMetadata } from "@/lib/seo";
+import { RegistrationBadges, TrustBadges } from "@/components/TrustBadges";
 
 export const metadata = buildMetadata({
   title: "About Us — PAN India Facility Management & Manpower Outsourcing Company",
@@ -80,6 +81,22 @@ export default function AboutPage() {
                 <p className="mt-3 text-white/70">{v.text}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-ink-50">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="Trust & compliance"
+            title="Verified, Compliant & Accountable"
+            text="Every deployment is backed by verified people, statutory compliance and a single accountable partner. Compliance documents are shared with clients on request."
+          />
+          <div className="mt-12">
+            <TrustBadges />
+          </div>
+          <div className="mt-8 flex justify-center">
+            <RegistrationBadges />
           </div>
         </div>
       </section>

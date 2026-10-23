@@ -7,6 +7,7 @@ import { services } from "@/lib/services";
 import { quantityOptions } from "@/lib/site";
 import { Captcha, type CaptchaHandle } from "./Captcha";
 import { trackLead } from "@/lib/track";
+import { FormTrust } from "./TrustBadges";
 
 type Variant = "dark" | "red" | "light";
 
@@ -152,9 +153,7 @@ export function EnquiryForm({
           {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           {status === "loading" ? "Sending…" : "BOOK NOW"}
         </button>
-        <p className={`text-xs ${variant === "light" ? "text-ink-500" : "text-white/70"}`}>
-          We respect your privacy. Your details are used only to respond to this enquiry.
-        </p>
+        <FormTrust light={variant !== "light"} />
       </div>
     </form>
   );
