@@ -1,4 +1,4 @@
-import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Building2, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq, MapEmbed, PageHero } from "@/components/sections";
 import { site } from "@/lib/site";
@@ -6,14 +6,15 @@ import { WhatsAppIcon } from "@/components/WhatsApp";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact Us — Call 0120-4216290",
-  description: `Contact JIS Group, ${site.address.full}. Call ${site.phone}, WhatsApp ${site.whatsapp} or email ${site.emails[0]} for security, housekeeping and facility management services.`,
+  title: "Contact Us — Call +91 72101 06050",
+  description: `Contact JIS Group, ${site.address.full}. Call or WhatsApp ${site.phone}, or email ${site.emails[0]} for security, housekeeping and facility management services.`,
   path: "/contact",
 });
 
 const cards = [
-  { icon: Phone, title: "Call us", lines: [site.phone], href: site.phoneHref },
+  { icon: Phone, title: "Call us (Sales)", lines: [site.phone], href: site.phoneHref },
   { icon: WhatsAppIcon, title: "WhatsApp us", lines: [site.whatsapp], href: site.whatsappHref },
+  { icon: Building2, title: "Head Office (Operations)", lines: [site.officePhone], href: site.officePhoneHref },
   { icon: Mail, title: "Email us", lines: [...site.emails], href: `mailto:${site.emails[0]}` },
   { icon: MapPin, title: "Head office", lines: [site.address.full], href: site.mapLink },
   { icon: Clock, title: "Working hours", lines: [site.hours] },
@@ -78,7 +79,7 @@ export default function ContactPage() {
 
       <Faq
         faqs={[
-          { q: "How soon will you respond to my enquiry?", a: "Our business team responds within 24 hours with a tailored proposal. For urgent requirements, call us directly on 0120-4216290." },
+          { q: "How soon will you respond to my enquiry?", a: "Our business team responds within 24 hours with a tailored proposal. For urgent requirements, call us directly on +91 72101 06050." },
           { q: "I am looking for a job. Whom should I contact?", a: "Please visit our Careers page and submit your details. We are not a placement agency and do not charge any fee from candidates." },
           { q: "Do you offer a free site visit?", a: "Yes. For security and facility management contracts we offer a free site assessment before finalising the proposal." },
         ]}

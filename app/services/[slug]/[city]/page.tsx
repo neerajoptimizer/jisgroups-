@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props) {
   if (!s || !c) return {};
   return buildMetadata({
     title: `${s.name} in ${c.name} | Verified ${s.shortName}`,
-    description: `Hire trusted ${s.keyword} in ${c.name}, ${c.state}. Verified, trained & supervised staff for ${c.areas.slice(0, 3).join(", ")} and across ${c.name}. Proposal in 24 hrs — call 0120-4216290.`,
+    description: `Hire trusted ${s.keyword} in ${c.name}, ${c.state}. Verified, trained & supervised staff for ${c.areas.slice(0, 3).join(", ")} and across ${c.name}. Proposal in 24 hrs — call +91 72101 06050.`,
     path: `/services/${s.slug}/${c.slug}`,
     image: s.image,
     keywords: [`${s.keyword} in ${c.name}`, `${s.keyword} ${c.name}`, `${s.shortName.toLowerCase()} in ${c.name}`, `${s.keyword} company in ${c.name}`, `${s.keyword} near me`],

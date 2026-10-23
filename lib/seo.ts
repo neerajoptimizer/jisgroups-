@@ -50,7 +50,7 @@ export const organizationSchema = () => ({
   logo: absoluteUrl("/images/logo.png"),
   image: absoluteUrl("/images/banners/staffing-proposal.jpg"),
   description: site.description,
-  telephone: "+91-120-4216290",
+  telephone: "+91-7210106050",
   email: site.emails[0],
   priceRange: "₹₹",
   address: {
@@ -74,18 +74,19 @@ export const organizationSchema = () => ({
   contactPoint: [
     {
       "@type": "ContactPoint",
-      telephone: "+91-120-4216290",
+      telephone: "+91-7210106050",
       contactType: "sales",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
+      url: "https://wa.me/917210106050",
     },
     {
       "@type": "ContactPoint",
-      telephone: "+91-7210106050",
-      contactType: "customer service",
+      telephone: "+91-120-4216290",
+      contactType: "customer support",
+      name: "Head Office — Operations",
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
-      url: "https://wa.me/917210106050",
     },
   ],
   hasMap: site.mapLink,

@@ -103,7 +103,7 @@ export function ServiceDetail({ service, city }: { service: Service; city?: City
                 <Phone className="h-4 w-4 text-brand-600" /> Prefer to talk? {site.phone}
               </a>
               <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] py-3 text-sm font-semibold text-white">
-                <WhatsAppIcon className="h-4 w-4" /> WhatsApp {site.whatsapp}
+                <WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp
               </a>
             </div>
           </aside>

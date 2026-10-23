@@ -53,7 +53,7 @@ export default function QuotePage() {
                 {site.phone}
               </a>
               <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn mt-4 w-full bg-[#25D366] text-white">
-                <WhatsAppIcon className="h-4 w-4" /> WhatsApp {site.whatsapp}
+                <WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp
               </a>
               <p className="mt-3 text-sm text-white/70">{site.hours}</p>
             </div>

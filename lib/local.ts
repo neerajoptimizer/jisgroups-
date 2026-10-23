@@ -73,7 +73,7 @@ export function cityFaqs(city: City) {
     },
     {
       q: `How do I get a quotation for ${city.name}?`,
-      a: `Fill in the enquiry form on this page or call ${"0120-4216290"}. Our team will share a customised proposal within 24 hours.`,
+      a: `Fill in the enquiry form on this page or call +91 72101 06050. Our team will share a customised proposal within 24 hours.`,
     },
   ];
 }

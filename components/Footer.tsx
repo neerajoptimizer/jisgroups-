@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Building2, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { industries } from "@/lib/industries";
@@ -81,11 +81,21 @@ export function Footer() {
             </li>
             <li className="flex gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" aria-hidden="true" />
-              <a href={site.phoneHref} className="hover:text-white">{site.phone}</a>
+              <span>
+                <a href={site.phoneHref} className="hover:text-white">{site.phone}</a>{" "}
+                <span className="text-ink-500">(Call / WhatsApp)</span>
+              </span>
             </li>
             <li className="flex gap-3">
               <WhatsAppIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#25D366]" />
-              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="hover:text-white">{site.whatsapp} (WhatsApp)</a>
+              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="hover:text-white">Chat on WhatsApp</a>
+            </li>
+            <li className="flex gap-3">
+              <Building2 className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" aria-hidden="true" />
+              <span>
+                Head Office (Operations):{" "}
+                <a href={site.officePhoneHref} className="hover:text-white">{site.officePhone}</a>
+              </span>
             </li>
             <li className="flex gap-3">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" aria-hidden="true" />

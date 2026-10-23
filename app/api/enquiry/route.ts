@@ -107,7 +107,7 @@ export async function POST(req: Request) {
   const results = await Promise.allSettled(deliveries);
   if (!results.some((r) => r.status === "fulfilled")) {
     console.error("[enquiry] delivery failed", results);
-    return NextResponse.json({ error: "We couldn't send your enquiry. Please call 0120-4216290." }, { status: 502 });
+    return NextResponse.json({ error: "We couldn't send your enquiry. Please call +91 72101 06050." }, { status: 502 });
   }
 
   // Confirmation to the customer — a failure here must not lose the enquiry.

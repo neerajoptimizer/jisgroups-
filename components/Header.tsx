@@ -114,7 +114,7 @@ export function Header() {
               <Phone className="h-3.5 w-3.5 text-brand-500" aria-hidden="true" /> {site.phone}
             </a>
             <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white">
-              <WhatsAppIcon className="h-3.5 w-3.5 text-[#25D366]" /> {site.whatsapp}
+              <WhatsAppIcon className="h-3.5 w-3.5 text-[#25D366]" /> WhatsApp
             </a>
             <a href={`mailto:${site.emails[0]}`} className="flex items-center gap-1.5 hover:text-white">
               <Mail className="h-3.5 w-3.5 text-brand-500" aria-hidden="true" /> {site.emails[0]}
@@ -261,7 +261,7 @@ export function Header() {
                   <Phone className="h-4 w-4" /> Call {site.phone}
                 </a>
                 <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn w-full bg-[#25D366] text-white">
-                  <WhatsAppIcon className="h-4 w-4" /> WhatsApp {site.whatsapp}
+                  <WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp
                 </a>
               </div>
             </nav>
