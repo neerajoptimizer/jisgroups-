@@ -8,6 +8,8 @@ export const site = {
     "JIS Group is a leading PAN India facility management and manpower outsourcing company offering security guards, housekeeping, lift operators, admin support and facility management staff for corporates and institutions. Get a customised staffing proposal within 24 hours.",
   phone: "0120-4216290",
   phoneHref: "tel:+911204216290",
+  whatsapp: "+91 72101 06050",
+  whatsappHref: `https://wa.me/917210106050?text=${encodeURIComponent("Hi JIS Group, I would like a quote for security / housekeeping / manpower services.")}`,
   emails: ["jagdeep@jisgroup.in", "jagdeeps5572@gmail.com"],
   address: {
     street: "C-266, 1st Floor, C Block, Sector-63",

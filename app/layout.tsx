@@ -6,6 +6,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { WhatsAppFloat, WhatsAppIcon } from "@/components/WhatsApp";
 import { site } from "@/lib/site";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 
@@ -73,14 +74,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         {/* Mobile sticky action bar */}
-        <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-ink-100 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-3 border-t border-ink-100 bg-white shadow-[0_-4px_20px_rgba(0,0,0,0.08)] lg:hidden">
           <a href={site.phoneHref} className="flex items-center justify-center gap-2 py-4 text-sm font-semibold text-ink-900">
-            <Phone className="h-4 w-4 text-brand-600" /> Call Now
+            <Phone className="h-4 w-4 text-brand-600" /> Call
+          </a>
+          <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 bg-[#25D366] py-4 text-sm font-semibold text-white">
+            <WhatsAppIcon className="h-4 w-4" /> WhatsApp
           </a>
           <Link href="/get-a-quote" className="flex items-center justify-center gap-2 bg-brand-600 py-4 text-sm font-semibold text-white">
-            <FileText className="h-4 w-4" /> Get Free Quote
+            <FileText className="h-4 w-4" /> Free Quote
           </Link>
         </div>
+        <WhatsAppFloat />
       </body>
     </html>
   );

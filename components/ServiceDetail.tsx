@@ -4,6 +4,7 @@ import { ArrowRight, CheckCircle2, MapPin, Phone } from "lucide-react";
 import { EnquiryForm } from "./EnquiryForm";
 import { Icon } from "./Icon";
 import { JsonLd } from "./JsonLd";
+import { WhatsAppIcon } from "./WhatsApp";
 import { CityPills, ClientMarquee, CtaBand, Faq, PageHero, SectionHeading, TrustPoints } from "./sections";
 import { services, type Service } from "@/lib/services";
 import { industries } from "@/lib/industries";
@@ -100,6 +101,9 @@ export function ServiceDetail({ service, city }: { service: Service; city?: City
               <EnquiryForm source={`service-${service.slug}${city ? `-${city.slug}` : ""}`} defaultService={service.name} defaultCity={city?.name} compact />
               <a href={site.phoneHref} className="mt-6 flex items-center justify-center gap-2 rounded-xl bg-ink-50 py-3 text-sm font-semibold text-ink-900">
                 <Phone className="h-4 w-4 text-brand-600" /> Prefer to talk? {site.phone}
+              </a>
+              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center justify-center gap-2 rounded-xl bg-[#25D366] py-3 text-sm font-semibold text-white">
+                <WhatsAppIcon className="h-4 w-4" /> WhatsApp {site.whatsapp}
               </a>
             </div>
           </aside>

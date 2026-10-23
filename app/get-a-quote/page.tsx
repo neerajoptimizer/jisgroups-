@@ -2,6 +2,7 @@ import { BadgeCheck, Clock, IndianRupee, ShieldCheck } from "lucide-react";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { ClientMarquee, HowItWorks, PageHero } from "@/components/sections";
 import { site } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsApp";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -51,7 +52,10 @@ export default function QuotePage() {
               <a href={site.phoneHref} className="mt-1 block font-display text-2xl font-bold">
                 {site.phone}
               </a>
-              <p className="mt-2 text-sm text-white/70">{site.hours}</p>
+              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn mt-4 w-full bg-[#25D366] text-white">
+                <WhatsAppIcon className="h-4 w-4" /> WhatsApp {site.whatsapp}
+              </a>
+              <p className="mt-3 text-sm text-white/70">{site.hours}</p>
             </div>
           </div>
           <div className="rounded-3xl bg-brand-600 p-6 sm:p-10 lg:col-span-8">

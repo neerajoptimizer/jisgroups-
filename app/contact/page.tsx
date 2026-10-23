@@ -2,16 +2,18 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { Faq, MapEmbed, PageHero } from "@/components/sections";
 import { site } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsApp";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Contact Us — Call 0120-4216290",
-  description: `Contact JIS Group, ${site.address.full}. Call ${site.phone} or email ${site.emails[0]} for security, housekeeping and facility management services.`,
+  description: `Contact JIS Group, ${site.address.full}. Call ${site.phone}, WhatsApp ${site.whatsapp} or email ${site.emails[0]} for security, housekeeping and facility management services.`,
   path: "/contact",
 });
 
 const cards = [
   { icon: Phone, title: "Call us", lines: [site.phone], href: site.phoneHref },
+  { icon: WhatsAppIcon, title: "WhatsApp us", lines: [site.whatsapp], href: site.whatsappHref },
   { icon: Mail, title: "Email us", lines: [...site.emails], href: `mailto:${site.emails[0]}` },
   { icon: MapPin, title: "Head office", lines: [site.address.full], href: site.mapLink },
   { icon: Clock, title: "Working hours", lines: [site.hours] },
@@ -31,7 +33,7 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="container-x">
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {cards.map((c) => {
               const inner = (
                 <>

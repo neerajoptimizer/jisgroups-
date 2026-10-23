@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import { services } from "@/lib/services";
 import { industries } from "@/lib/industries";
 import { featuredCities } from "@/lib/locations";
+import { WhatsAppIcon } from "./WhatsApp";
 
 const company = [
   { href: "/about", label: "About Us" },
@@ -50,6 +51,9 @@ export function Footer() {
             <a href={site.phoneHref} className="btn-ghost">
               <Phone className="h-4 w-4" /> {site.phone}
             </a>
+            <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white hover:-translate-y-0.5">
+              <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+            </a>
           </div>
         </div>
       </div>
@@ -77,6 +81,10 @@ export function Footer() {
             <li className="flex gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" aria-hidden="true" />
               <a href={site.phoneHref} className="hover:text-white">{site.phone}</a>
+            </li>
+            <li className="flex gap-3">
+              <WhatsAppIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#25D366]" />
+              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="hover:text-white">{site.whatsapp} (WhatsApp)</a>
             </li>
             <li className="flex gap-3">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" aria-hidden="true" />

@@ -79,6 +79,14 @@ export const organizationSchema = () => ({
       areaServed: "IN",
       availableLanguage: ["English", "Hindi"],
     },
+    {
+      "@type": "ContactPoint",
+      telephone: "+91-7210106050",
+      contactType: "customer service",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+      url: "https://wa.me/917210106050",
+    },
   ],
   hasMap: site.mapLink,
 });

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock, Mail, Phone } from "lucide-react";
 import { site } from "@/lib/site";
+import { WhatsAppIcon } from "@/components/WhatsApp";
 
 export const metadata: Metadata = {
   title: "Thank You",
@@ -57,6 +58,9 @@ export default async function ThankYouPage({ searchParams }: Props) {
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
             <a href={site.phoneHref} className="btn-primary">
               <Phone className="h-4 w-4" /> Need it urgently? Call {site.phone}
+            </a>
+            <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white hover:-translate-y-0.5">
+              <WhatsAppIcon className="h-4 w-4" /> WhatsApp us
             </a>
             <Link href={isJob ? "/careers" : "/services"} className="btn border border-ink-100 text-ink-900 hover:border-ink-900">
               {isJob ? "Back to careers" : "Explore our services"} <ArrowRight className="h-4 w-4" />

@@ -57,7 +57,7 @@ ${body}
 </td></tr>
 <tr><td style="background:#f6f6f7;padding:18px 28px;font-size:12px;color:#6b6b74;line-height:1.6">
 <strong style="color:#33333a">${esc(site.legalName)}</strong><br>${esc(site.address.full)}<br>
-Phone: <a href="${site.phoneHref}" style="color:#d91414">${site.phone}</a> · <a href="${site.url}" style="color:#d91414">${site.url.replace(/^https?:\/\//, "")}</a>
+Phone: <a href="${site.phoneHref}" style="color:#d91414">${site.phone}</a> · WhatsApp: <a href="${site.whatsappHref}" style="color:#d91414">${site.whatsapp}</a> · <a href="${site.url}" style="color:#d91414">${site.url.replace(/^https?:\/\//, "")}</a>
 </td></tr></table></td></tr></table></body></html>`;
 }
 
@@ -118,11 +118,11 @@ ${table(summary)}
 <p style="margin:20px 0 0;font-size:15px;line-height:1.6">${
       isJob
         ? "Please note: JIS never charges candidates any fee for a job, training or uniform."
-        : `Need to speak to us sooner? Call <a href="${site.phoneHref}" style="color:#d91414;font-weight:bold">${site.phone}</a> or simply reply to this email.`
+        : `Need to speak to us sooner? Call <a href="${site.phoneHref}" style="color:#d91414;font-weight:bold">${site.phone}</a>, WhatsApp <a href="${site.whatsappHref}" style="color:#d91414;font-weight:bold">${site.whatsapp}</a> or simply reply to this email.`
     }</p>
 <p style="margin:18px 0 0;font-size:15px;line-height:1.6">Warm regards,<br><strong>Team ${esc(site.name)}</strong></p>`,
   );
-  const text = `Dear ${first},\n\n${intro.replace(/<[^>]+>/g, "")}\n\n${summary.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nCall ${site.phone} or reply to this email.\n\nTeam ${site.name}`;
+  const text = `Dear ${first},\n\n${intro.replace(/<[^>]+>/g, "")}\n\n${summary.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nCall ${site.phone}, WhatsApp ${site.whatsapp} or reply to this email.\n\nTeam ${site.name}`;
   await transport().sendMail({ from: from(), to: d.email, replyTo: ownerInbox(), subject, html, text });
 }
 
@@ -148,7 +148,7 @@ export async function sendViaFormSubmit(kind: "enquiry" | "careers", d: Data) {
     payload.email = d.email; // FormSubmit sends _autoresponse to this address and sets Reply-To
     payload._autoresponse = isJob
       ? `Dear ${d.name}, thank you for applying for the ${d.role} position with ${site.name}. Our HR team will call you if your profile matches an open position. JIS never charges candidates any fee. — Team ${site.name}, ${site.phone}`
-      : `Dear ${d.name}, thank you for contacting ${site.name}. We have received your requirement for ${d.service} (${d.quantity}) in ${d.city}. Our business team will contact you within 24 hours with a tailored proposal. Need us sooner? Call ${site.phone}. — Team ${site.name}, ${site.legalName}, ${site.address.full}`;
+      : `Dear ${d.name}, thank you for contacting ${site.name}. We have received your requirement for ${d.service} (${d.quantity}) in ${d.city}. Our business team will contact you within 24 hours with a tailored proposal. Need us sooner? Call ${site.phone} or WhatsApp ${site.whatsapp}. — Team ${site.name}, ${site.legalName}, ${site.address.full}`;
   }
   const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
     method: "POST",
