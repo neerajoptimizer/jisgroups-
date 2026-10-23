@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { verifyCaptcha } from "@/lib/captcha";
 import { formsubmitEnabled, sendCustomerConfirmation, sendOwnerNotification, sendViaFormSubmit, smtpConfigured } from "@/lib/mail";
 
 const REQUIRED = ["company", "name", "email", "phone", "city", "service", "quantity"] as const;
@@ -30,6 +31,9 @@ export async function POST(req: Request) {
 
   // Honeypot — silently accept bot submissions without delivering them.
   if (clean(body.website)) return NextResponse.json({ ok: true });
+
+  if (!verifyCaptcha(body.captchaToken, body.captchaAnswer))
+    return NextResponse.json({ error: "Security check answer is incorrect or expired. Please try the new question." }, { status: 400 });
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   if (limited(ip)) return NextResponse.json({ error: "Too many requests. Please call us directly." }, { status: 429 });

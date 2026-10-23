@@ -1,14 +1,16 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Send } from "lucide-react";
 import { careerRoles } from "@/lib/careers";
+import { Captcha, type CaptchaHandle } from "./Captcha";
 
 export function CareersForm() {
   const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [error, setError] = useState("");
+  const captcha = useRef<CaptchaHandle>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,6 +27,7 @@ export function CareersForm() {
       form.reset();
       router.push("/thank-you?type=careers");
     } catch (err) {
+      captcha.current?.refresh();
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
     }
@@ -70,6 +73,9 @@ export function CareersForm() {
       <div className="sm:col-span-2">
         <label htmlFor="c-msg" className="mb-1.5 block text-sm font-medium text-ink-900">About you</label>
         <textarea id="c-msg" name="message" rows={3} maxLength={1000} className="field" placeholder="Education, previous employer, languages known…" />
+      </div>
+      <div className="sm:col-span-2">
+        <Captcha ref={captcha} id="c-captcha" />
       </div>
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <input name="website" tabIndex={-1} autoComplete="off" />

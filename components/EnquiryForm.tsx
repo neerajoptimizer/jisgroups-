@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2, Send } from "lucide-react";
 import { services } from "@/lib/services";
 import { quantityOptions } from "@/lib/site";
+import { Captcha, type CaptchaHandle } from "./Captcha";
 
 type Variant = "dark" | "red" | "light";
 
@@ -30,6 +31,7 @@ export function EnquiryForm({
   const router = useRouter();
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [error, setError] = useState("");
+  const captcha = useRef<CaptchaHandle>(null);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -48,6 +50,7 @@ export function EnquiryForm({
       form.reset();
       router.push("/thank-you");
     } catch (err) {
+      captcha.current?.refresh();
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
     }
@@ -128,6 +131,9 @@ export function EnquiryForm({
       <div className="sm:col-span-2">
         <L htmlFor={id("message")}>Your message</L>
         <textarea id={id("message")} name="message" rows={compact ? 3 : 4} maxLength={2000} className="field resize-y" placeholder="Shifts, site details, start date…" />
+      </div>
+      <div className="sm:col-span-2">
+        <Captcha ref={captcha} id={id("captcha")} labelClassName={labelCls[variant]} />
       </div>
       {/* Honeypot: hidden from humans, bots fill it */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
