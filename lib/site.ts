@@ -3,6 +3,7 @@ export const site = {
   legalName: "JIS Business Solutions Pvt. Ltd.",
   shortName: "JIS Group",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.jisgroup.in").replace(/\/$/, ""),
+  gtmId: process.env.NEXT_PUBLIC_GTM_ID || "GTM-PGMMKKH9",
   tagline: "Security, Housekeeping & Facility Management Services Across India",
   description:
     "JIS Group is a leading PAN India facility management and manpower outsourcing company offering security guards, housekeeping, lift operators, admin support and facility management staff for corporates and institutions. Get a customised staffing proposal within 24 hours.",

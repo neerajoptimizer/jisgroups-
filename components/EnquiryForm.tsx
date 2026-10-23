@@ -6,6 +6,7 @@ import { Loader2, Send } from "lucide-react";
 import { services } from "@/lib/services";
 import { quantityOptions } from "@/lib/site";
 import { Captcha, type CaptchaHandle } from "./Captcha";
+import { trackLead } from "@/lib/track";
 
 type Variant = "dark" | "red" | "light";
 
@@ -47,6 +48,7 @@ export function EnquiryForm({
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json.error || "Something went wrong. Please call us instead.");
+      trackLead(source, { service: String(data.service || ""), quantity: String(data.quantity || ""), city: String(data.city || "") });
       form.reset();
       router.push("/thank-you");
     } catch (err) {

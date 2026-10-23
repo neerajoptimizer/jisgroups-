@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Loader2, Send } from "lucide-react";
 import { careerRoles } from "@/lib/careers";
 import { Captcha, type CaptchaHandle } from "./Captcha";
+import { trackLead } from "@/lib/track";
 
 export function CareersForm() {
   const router = useRouter();
@@ -24,6 +25,7 @@ export function CareersForm() {
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json.error || "Something went wrong.");
+      trackLead("careers");
       form.reset();
       router.push("/thank-you?type=careers");
     } catch (err) {
