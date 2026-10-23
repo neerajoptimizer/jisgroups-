@@ -125,3 +125,36 @@ ${table(summary)}
   const text = `Dear ${first},\n\n${intro.replace(/<[^>]+>/g, "")}\n\n${summary.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nCall ${site.phone} or reply to this email.\n\nTeam ${site.name}`;
   await transport().sendMail({ from: from(), to: d.email, replyTo: ownerInbox(), subject, html, text });
 }
+
+/**
+ * Fallback when SMTP isn't configured: FormSubmit (formsubmit.co) emails the enquiry to the
+ * business inbox and auto-replies to the customer. Needs a one-time "Activate Form" click in
+ * that inbox. Set FORMSUBMIT_DISABLED=1 to turn it off.
+ */
+export const formsubmitEnabled = () => !smtpConfigured() && !process.env.FORMSUBMIT_DISABLED;
+
+export async function sendViaFormSubmit(kind: "enquiry" | "careers", d: Data) {
+  const to = process.env.ENQUIRY_TO_EMAIL || site.emails.find((e) => e.endsWith("@gmail.com")) || site.emails[0];
+  const isJob = kind === "careers";
+  const payload: Record<string, string> = {
+    _subject: isJob
+      ? `New job application: ${d.role} — ${d.name} (${d.city})`
+      : `New enquiry: ${d.service} × ${d.quantity} — ${d.company} (${d.city})`,
+    _template: "table",
+    _captcha: "false",
+  };
+  for (const [k, label] of Object.entries(LABELS)) if (d[k]) payload[label] = d[k]!;
+  if (d.email) {
+    payload.email = d.email; // FormSubmit sends _autoresponse to this address and sets Reply-To
+    payload._autoresponse = isJob
+      ? `Dear ${d.name}, thank you for applying for the ${d.role} position with ${site.name}. Our HR team will call you if your profile matches an open position. JIS never charges candidates any fee. — Team ${site.name}, ${site.phone}`
+      : `Dear ${d.name}, thank you for contacting ${site.name}. We have received your requirement for ${d.service} (${d.quantity}) in ${d.city}. Our business team will contact you within 24 hours with a tailored proposal. Need us sooner? Call ${site.phone}. — Team ${site.name}, ${site.legalName}, ${site.address.full}`;
+  }
+  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json", Origin: site.url, Referer: `${site.url}${d.page || "/"}` },
+    body: JSON.stringify(payload),
+  });
+  const json = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
+  if (!res.ok || String(json.success) !== "true") throw new Error(`FormSubmit: ${json.message || res.status}`);
+}

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendCustomerConfirmation, sendOwnerNotification, smtpConfigured } from "@/lib/mail";
+import { formsubmitEnabled, sendCustomerConfirmation, sendOwnerNotification, sendViaFormSubmit, smtpConfigured } from "@/lib/mail";
 
 const REQUIRED = ["company", "name", "email", "phone", "city", "service", "quantity"] as const;
 const FIELDS = [...REQUIRED, "designation", "message", "role", "experience", "source", "page"] as const;
@@ -51,6 +51,15 @@ export async function POST(req: Request) {
 
   // Primary channel: SMTP (Gmail) — notification to the business inbox.
   if (smtpConfigured()) deliveries.push(sendOwnerNotification(kind, data));
+  // Fallback without SMTP credentials: FormSubmit (also auto-replies to the customer).
+  else if (formsubmitEnabled())
+    deliveries.push(
+      sendViaFormSubmit(kind, data).catch((err: Error) => {
+        // Before the one-time activation click, don't show customers an error — log it instead.
+        if (/activat/i.test(err.message)) return console.error("[enquiry] FormSubmit not activated yet", data);
+        throw err;
+      }),
+    );
 
   // Optional extra channel: forward the enquiry as JSON (Google Sheets, Zapier, CRM).
   if (process.env.ENQUIRY_WEBHOOK_URL) {
