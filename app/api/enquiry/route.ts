@@ -21,7 +21,25 @@ function limited(ip: string) {
   return h.n > 8;
 }
 
+const ALLOWED_HOSTS = new Set(["www.jisgroup.in", "jisgroup.in", "localhost:3000", "localhost:3100"]);
+
 export async function POST(req: Request) {
+  // Only accept submissions made from this website, and reject oversized payloads.
+  const origin = req.headers.get("origin");
+  if (origin) {
+    const host = (() => {
+      try {
+        return new URL(origin).host;
+      } catch {
+        return "";
+      }
+    })();
+    if (!ALLOWED_HOSTS.has(host) && !host.endsWith(".vercel.app"))
+      return NextResponse.json({ error: "Forbidden." }, { status: 403 });
+  }
+  if (Number(req.headers.get("content-length") || 0) > 20_000)
+    return NextResponse.json({ error: "Request too large." }, { status: 413 });
+
   let body: Record<string, unknown>;
   try {
     body = await req.json();
