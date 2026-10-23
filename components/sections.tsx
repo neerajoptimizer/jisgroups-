@@ -205,7 +205,7 @@ export function WhyChoose({ image = "/images/team.jpg" }: { image?: string }) {
       <div className="container-x grid items-center gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <p className="eyebrow">Why JIS</p>
-          <h2 className="h2 mt-3">Why Choose JIS Business Solutions</h2>
+          <h2 className="h2 mt-3">Why Choose JIS Group</h2>
           <p className="lead mt-5">
             Partnering with JIS means more than hiring manpower — it means having a <strong className="text-ink-900">reliable operations partner</strong> who
             understands corporate standards, compliance, and quality assurance.
@@ -216,7 +216,7 @@ export function WhyChoose({ image = "/images/team.jpg" }: { image?: string }) {
         </div>
         <div className="relative lg:col-span-4">
           <div className="relative aspect-square overflow-hidden rounded-3xl">
-            <Image src={image} alt="JIS Business Solutions security and housekeeping team" fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" />
+            <Image src={image} alt="JIS Group security and housekeeping team" fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover" />
           </div>
           <div className="absolute -bottom-6 -left-4 rounded-2xl bg-brand-600 px-6 py-4 text-white shadow-xl sm:-left-6">
             <p className="font-display text-3xl font-extrabold">10+</p>

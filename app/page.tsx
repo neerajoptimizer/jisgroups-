@@ -21,15 +21,15 @@ import { posts } from "@/lib/blog";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Security, Housekeeping & Facility Management Services in India | JIS Business Solutions",
+  title: "Security, Housekeeping & Facility Management Services in India | JIS Group",
   description:
-    "Hire verified security guards, housekeeping staff, lift operators and admin support across India. JIS Business Solutions — PAN India facility management & manpower outsourcing. Proposal in 24 hours, no placement fee.",
+    "Hire verified security guards, housekeeping staff, lift operators and admin support across India. JIS Group — PAN India facility management & manpower outsourcing. Proposal in 24 hours, no placement fee.",
   path: "/",
 });
 
 const homeFaqs = [
   {
-    q: "What services does JIS Business Solutions provide?",
+    q: "What services does JIS Group provide?",
     a: "We provide security guard services, housekeeping services, integrated facility management, manpower outsourcing, lift operators and admin & office support staff for corporates and institutions across India.",
   },
   {
@@ -119,7 +119,7 @@ export default function HomePage() {
             <h2 className="h2 mt-3">A Trusted Partner for Your Facility &amp; Manpower Needs</h2>
             <div className="lead mt-6 space-y-5">
               <p>
-                JIS Business Solutions Pvt. Ltd. is one of India&apos;s leading <strong className="text-ink-900">facility management and manpower outsourcing companies</strong>,
+                JIS Group is one of India&apos;s leading <strong className="text-ink-900">facility management and manpower outsourcing companies</strong>,
                 offering <strong className="text-ink-900">security, housekeeping, and support staffing solutions</strong> tailored for corporates and institutions.
               </p>
               <p>

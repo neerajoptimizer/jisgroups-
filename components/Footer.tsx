@@ -69,7 +69,10 @@ export function Footer() {
           <ul className="mt-6 space-y-3 text-sm">
             <li className="flex gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" aria-hidden="true" />
-              <address className="not-italic">{site.address.full}</address>
+              <address className="not-italic">
+                <span className="block font-semibold text-white">{site.legalName}</span>
+                {site.address.full}
+              </address>
             </li>
             <li className="flex gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" aria-hidden="true" />
@@ -127,7 +130,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs md:flex-row">
-          <p>© {new Date().getFullYear()} {site.name} All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {site.name} · {site.legalName} All rights reserved.</p>
           <div className="flex gap-5">
             <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white">Terms of Service</Link>

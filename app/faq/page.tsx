@@ -9,7 +9,7 @@ export const metadata = buildMetadata({
 });
 
 const general = [
-  { q: "Is JIS a placement agency?", a: "No. JIS Business Solutions is a facility management and manpower outsourcing company. Staff remain on JIS rolls and we manage them throughout the contract. There is no placement fee." },
+  { q: "Is JIS a placement agency?", a: "No. JIS Group is a facility management and manpower outsourcing company. Staff remain on JIS rolls and we manage them throughout the contract. There is no placement fee." },
   { q: "Where do you provide services?", a: "We are headquartered in Noida (Delhi NCR) and have PAN India service capability, including metros, state capitals and industrial cities." },
   { q: "How is pricing calculated?", a: "Pricing depends on the role, number of staff, shift length, applicable state minimum wages, statutory contributions (PF, ESIC, bonus) and whether consumables or equipment are included. We share a transparent, itemised proposal within 24 hours." },
   { q: "What is your minimum order?", a: "We work with organisations of all sizes — from a single guard post to multi-site contracts. Share your requirement and we will advise the best engagement model." },

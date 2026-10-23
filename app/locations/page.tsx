@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Locations — Security & Housekeeping Services Across India",
   description:
-    "JIS Business Solutions provides security guards, housekeeping and facility management services PAN India — Delhi NCR, Mumbai, Bengaluru, Hyderabad, Pune, Chennai, Kolkata and more.",
+    "JIS Group provides security guards, housekeeping and facility management services PAN India — Delhi NCR, Mumbai, Bengaluru, Hyderabad, Pune, Chennai, Kolkata and more.",
   path: "/locations",
 });
 

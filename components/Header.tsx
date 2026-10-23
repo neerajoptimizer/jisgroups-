@@ -136,7 +136,7 @@ export function Header() {
           <Link href="/" className="flex shrink-0 items-center gap-3" aria-label={`${site.name} — Home`}>
             <Image src="/images/logo.png" alt="JIS logo" width={56} height={56} priority className="h-14 w-14" />
             <span className="leading-tight">
-              <span className="block font-display text-sm leading-tight font-extrabold tracking-tight text-ink-900 sm:whitespace-nowrap sm:text-lg">JIS Groups Business Solutions</span>
+              <span className="block font-display text-sm leading-tight font-extrabold tracking-tight text-ink-900 sm:whitespace-nowrap sm:text-lg">JIS Group</span>
               <span className="hidden text-[11px] font-medium tracking-wider text-ink-500 uppercase sm:block">Security · Housekeeping · Facility</span>
             </span>
           </Link>

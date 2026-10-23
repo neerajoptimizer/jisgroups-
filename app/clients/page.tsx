@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Our Clients — Organisations That Trust JIS",
   description:
-    "Real estate developers, schools, institutes, clubs and corporates trust JIS Business Solutions for security, housekeeping and facility management services.",
+    "Real estate developers, schools, institutes, clubs and corporates trust JIS Group for security, housekeeping and facility management services.",
   path: "/clients",
 });
 

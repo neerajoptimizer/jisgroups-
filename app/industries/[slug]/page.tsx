@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props) {
   if (!i) return {};
   return buildMetadata({
     title: `Security & Facility Services for ${i.name}`,
-    description: `${i.summary} PAN India coverage by JIS Business Solutions — proposal within 24 hours.`,
+    description: `${i.summary} PAN India coverage by JIS Group — proposal within 24 hours.`,
     path: `/industries/${i.slug}`,
   });
 }

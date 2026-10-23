@@ -1,11 +1,11 @@
 export const site = {
-  name: "JIS Business Solutions Pvt. Ltd.",
-  shortName: "JIS Business Solutions",
-  brand: "JIS Group",
+  name: "JIS Group",
+  legalName: "JIS Business Solutions Pvt. Ltd.",
+  shortName: "JIS Group",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.jisgroup.in").replace(/\/$/, ""),
   tagline: "Security, Housekeeping & Facility Management Services Across India",
   description:
-    "JIS Business Solutions Pvt. Ltd. is a leading PAN India facility management and manpower outsourcing company offering security guards, housekeeping, lift operators, admin support and facility management staff for corporates and institutions. Get a customised staffing proposal within 24 hours.",
+    "JIS Group is a leading PAN India facility management and manpower outsourcing company offering security guards, housekeeping, lift operators, admin support and facility management staff for corporates and institutions. Get a customised staffing proposal within 24 hours.",
   phone: "0120-4216290",
   phoneHref: "tel:+911204216290",
   emails: ["jagdeep@jisgroup.in", "jagdeeps5572@gmail.com"],

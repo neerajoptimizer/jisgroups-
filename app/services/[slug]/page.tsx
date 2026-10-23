@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props) {
   if (!s) return {};
   return buildMetadata({
     title: `${s.name} in India — Verified & Trained Staff`,
-    description: `${s.summary} PAN India deployment by JIS Business Solutions. Customised proposal within 24 hours.`,
+    description: `${s.summary} PAN India deployment by JIS Group. Customised proposal within 24 hours.`,
     path: `/services/${s.slug}`,
     image: s.image,
     keywords: [s.keyword, `${s.keyword} company`, `${s.keyword} in India`, `${s.keyword} in Noida`, `${s.keyword} in Delhi NCR`],

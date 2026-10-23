@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "About Us — PAN India Facility Management & Manpower Outsourcing Company",
   description:
-    "JIS Business Solutions Pvt. Ltd. is a Noida-headquartered facility management and manpower outsourcing company with over a decade of experience and a PAN India presence.",
+    "JIS Group is a Noida-headquartered facility management and manpower outsourcing company with over a decade of experience and a PAN India presence.",
   path: "/about",
   image: "/images/team.jpg",
 });
@@ -32,10 +32,10 @@ export default function AboutPage() {
         <div className="container-x grid items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="eyebrow">Who we are</p>
-            <h2 className="h2 mt-3">JIS Business Solutions Pvt. Ltd.</h2>
+            <h2 className="h2 mt-3">JIS Group</h2>
             <div className="lead mt-6 space-y-5">
               <p>
-                JIS Business Solutions Pvt. Ltd. is one of India&apos;s leading facility management and manpower outsourcing companies, offering security,
+                JIS Group is one of India&apos;s leading facility management and manpower outsourcing companies, offering security,
                 housekeeping, and support staffing solutions tailored for corporates and institutions.
               </p>
               <p>
@@ -54,7 +54,7 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-3xl">
-              <Image src="/images/team.jpg" alt="JIS Business Solutions team" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+              <Image src="/images/team.jpg" alt="JIS Group team" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="relative aspect-square overflow-hidden rounded-3xl">
               <Image src="/images/gallery/security-guards.jpg" alt="JIS security guards" fill sizes="25vw" className="object-cover" />

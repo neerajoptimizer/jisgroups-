@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Careers — Security Guard, Housekeeping & Facility Jobs",
   description:
-    "Apply for security guard, housekeeping, lift operator, receptionist and facility jobs with JIS Business Solutions. Timely salary, PF & ESIC, uniform and training. No fee charged.",
+    "Apply for security guard, housekeeping, lift operator, receptionist and facility jobs with JIS Group. Timely salary, PF & ESIC, uniform and training. No fee charged.",
   path: "/careers",
   image: "/images/gallery/housekeeping-team.jpg",
 });

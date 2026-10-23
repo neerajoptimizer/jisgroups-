@@ -33,7 +33,7 @@ export const services: Service[] = [
     summary:
       "Uniformed, verified and trained security guards for corporate offices, industries, hotels, residential societies and institutions — with round-the-clock supervision.",
     intro: [
-      "Security is the first impression your premises make and the last line of defence for your people and assets. JIS Business Solutions provides professionally managed security guard services for corporates, factories, warehouses, hotels, hospitals, schools, residential societies and construction sites across India.",
+      "Security is the first impression your premises make and the last line of defence for your people and assets. JIS Group provides professionally managed security guard services for corporates, factories, warehouses, hotels, hospitals, schools, residential societies and construction sites across India.",
       "Every guard we deploy is background-verified, medically fit, trained in access control, fire safety and emergency response, and turned out in a smart JIS uniform. Field officers conduct day and night checks, and our 24×7 control desk ensures any absenteeism is covered with a quick replacement — so your post is never left unmanned.",
     ],
     highlights: [

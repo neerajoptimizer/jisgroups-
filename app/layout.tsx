@@ -15,8 +15,8 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["300", "400", "500", "600
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Security, Housekeeping & Facility Management Services in India | JIS Business Solutions",
-    template: "%s | JIS Business Solutions",
+    default: "Security, Housekeeping & Facility Management Services in India | JIS Group",
+    template: "%s | JIS Group",
   },
   description: site.description,
   applicationName: site.shortName,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "housekeeping services in Delhi NCR",
     "facility management services India",
     "lift operator services",
-    "JIS Business Solutions",
+    "JIS Group",
   ],
   formatDetection: { telephone: true, email: true, address: true },
   alternates: { canonical: site.url },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     siteName: site.name,
     url: site.url,
-    title: "JIS Business Solutions — Security, Housekeeping & Facility Management Across India",
+    title: "JIS Group — Security, Housekeeping & Facility Management Across India",
     description: site.description,
     images: [{ url: "/images/hero-banner.jpg", width: 925, height: 698, alt: site.name }],
   },

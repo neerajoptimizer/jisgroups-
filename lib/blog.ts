@@ -53,7 +53,7 @@ export const posts: Post[] = [
       {
         heading: "How JIS approaches security",
         body: [
-          "At JIS Business Solutions we deploy uniformed, verified and trained guards with round-the-clock supervision and quick replacement support. You receive a customised proposal within 24 hours, with transparent costing and complete documentation.",
+          "At JIS Group we deploy uniformed, verified and trained guards with round-the-clock supervision and quick replacement support. You receive a customised proposal within 24 hours, with transparent costing and complete documentation.",
         ],
       },
     ],

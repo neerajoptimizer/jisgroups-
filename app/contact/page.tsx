@@ -6,7 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
   title: "Contact Us — Call 0120-4216290",
-  description: `Contact JIS Business Solutions Pvt. Ltd., ${site.address.full}. Call ${site.phone} or email ${site.emails[0]} for security, housekeeping and facility management services.`,
+  description: `Contact JIS Group, ${site.address.full}. Call ${site.phone} or email ${site.emails[0]} for security, housekeeping and facility management services.`,
   path: "/contact",
 });
 

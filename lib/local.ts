@@ -13,11 +13,11 @@ export function serviceCityIntro(service: Service, city: City): string[] {
   const k = service.keyword;
   const variants = [
     [
-      `Looking for reliable ${k} in ${city.name}? JIS Business Solutions Pvt. Ltd. deploys verified, trained and uniformed staff for businesses across ${city.name}, ${city.state} — from ${areas} to every major commercial and industrial pocket of the city.`,
+      `Looking for reliable ${k} in ${city.name}? JIS Group deploys verified, trained and uniformed staff for businesses across ${city.name}, ${city.state} — from ${areas} to every major commercial and industrial pocket of the city.`,
       `${city.name} is home to ${city.economy}. These organisations need people they can trust on the ground every single day. Our ${service.shortName.toLowerCase()} teams follow the same SOPs, supervision and reporting we use for our corporate clients nationwide, with a dedicated account manager for your ${city.name} sites.`,
     ],
     [
-      `JIS Business Solutions provides professional ${k} in ${city.name} for corporates, institutions and commercial establishments. Whether you operate a single office in ${city.areas[0]} or multiple sites across ${list(city.areas.slice(1, 5))}, we deliver trained staff with complete documentation and round-the-clock support.`,
+      `JIS Group provides professional ${k} in ${city.name} for corporates, institutions and commercial establishments. Whether you operate a single office in ${city.areas[0]} or multiple sites across ${list(city.areas.slice(1, 5))}, we deliver trained staff with complete documentation and round-the-clock support.`,
       `With demand driven by ${city.economy}, businesses in ${city.name} need a partner that can deploy fast and replace quickly. That is exactly what JIS does — a customised proposal within 24 hours and staff on site within days, with no placement fee.`,
     ],
     [
@@ -30,7 +30,7 @@ export function serviceCityIntro(service: Service, city: City): string[] {
 
 export function cityIntro(city: City): string[] {
   return [
-    `JIS Business Solutions Pvt. Ltd. offers end-to-end security, housekeeping, facility management and manpower outsourcing services in ${city.name}, ${city.state}. ${
+    `JIS Group offers end-to-end security, housekeeping, facility management and manpower outsourcing services in ${city.name}, ${city.state}. ${
       city.hq
         ? `Our head office is right here in ${city.name}, so our operations team is never far from your site.`
         : `Backed by our head office in Noida and our PAN India operations network, we serve clients across ${city.name} with the same quality standards.`
