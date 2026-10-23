@@ -261,7 +261,7 @@ export const services: Service[] = [
     shortName: "Lift Operators",
     keyword: "lift operator services",
     icon: "arrowUpDown",
-    image: "/images/team.jpg",
+    image: "/images/gallery/jis-team.jpg",
     summary:
       "Trained, courteous lift operators for commercial towers, hospitals, malls, hotels and residential high-rises.",
     intro: [

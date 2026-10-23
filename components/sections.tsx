@@ -199,7 +199,7 @@ export function IndustriesGrid() {
   );
 }
 
-export function WhyChoose({ image = "/images/team.jpg" }: { image?: string }) {
+export function WhyChoose({ image = "/images/gallery/jis-team.jpg" }: { image?: string }) {
   return (
     <section className="section">
       <div className="container-x grid items-center gap-12 lg:grid-cols-12">

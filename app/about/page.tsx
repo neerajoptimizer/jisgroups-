@@ -8,7 +8,7 @@ export const metadata = buildMetadata({
   description:
     "JIS Group is a Noida-headquartered facility management and manpower outsourcing company with over a decade of experience and a PAN India presence.",
   path: "/about",
-  image: "/images/team.jpg",
+  image: "/images/gallery/jis-team.jpg",
 });
 
 const values = [
@@ -25,7 +25,7 @@ export default function AboutPage() {
         title="A Trusted Partner for Your Facility & Manpower Needs"
         subtitle="Over a decade of experience. PAN India presence. One accountable partner for security, housekeeping and support staffing."
         crumbs={[{ name: "About Us", path: "/about" }]}
-        image="/images/team.jpg"
+        image="/images/gallery/jis-team.jpg"
       />
 
       <section className="section">
@@ -54,7 +54,7 @@ export default function AboutPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="relative col-span-2 aspect-[16/10] overflow-hidden rounded-3xl">
-              <Image src="/images/team.jpg" alt="JIS Group team" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+              <Image src="/images/gallery/jis-team.jpg" alt="JIS Group team" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="relative aspect-square overflow-hidden rounded-3xl">
               <Image src="/images/gallery/security-guards.jpg" alt="JIS security guards" fill sizes="25vw" className="object-cover" />

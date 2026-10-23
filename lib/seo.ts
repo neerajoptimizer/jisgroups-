@@ -7,7 +7,7 @@ export function buildMetadata({
   title,
   description,
   path,
-  image = "/images/hero-banner.jpg",
+  image = "/images/banners/staffing-proposal.jpg",
   keywords,
   type = "website",
 }: {
@@ -48,7 +48,7 @@ export const organizationSchema = () => ({
   alternateName: [site.legalName, "JIS Business Solutions", "JIS"],
   url: site.url,
   logo: absoluteUrl("/images/logo.png"),
-  image: absoluteUrl("/images/hero-banner.jpg"),
+  image: absoluteUrl("/images/banners/staffing-proposal.jpg"),
   description: site.description,
   telephone: "+91-120-4216290",
   email: site.emails[0],
