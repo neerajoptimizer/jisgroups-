@@ -45,12 +45,14 @@ All copy lives in `lib/`:
 
 ## Enquiry forms
 
-Forms post to `/api/enquiry` (validation, honeypot, basic rate limit). Configure delivery in `.env.local`:
+Forms post to `/api/enquiry` (validation, honeypot, basic rate limit), then redirect to `/thank-you`.
+With `SMTP_USER` + `SMTP_PASS` set (Gmail App Password), each submission sends:
 
-- **Resend email**: `RESEND_API_KEY`, `ENQUIRY_TO_EMAIL`, `ENQUIRY_FROM_EMAIL`
-- **Webhook** (Zapier / Make / Google Sheets / CRM): `ENQUIRY_WEBHOOK_URL`
+1. a notification to `ENQUIRY_TO_EMAIL` (defaults to `SMTP_USER`), with Reply-To set to the customer;
+2. a branded confirmation to the customer (when they gave an email), with Reply-To set to you.
 
-Without either, submissions are logged to the server console only.
+`ENQUIRY_WEBHOOK_URL` can additionally forward each enquiry as JSON. Without any channel configured,
+submissions are only logged to the server console.
 
 ## Before going live
 

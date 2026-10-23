@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Loader2, Send } from "lucide-react";
 import { services } from "@/lib/services";
 import { quantityOptions } from "@/lib/site";
 
@@ -26,7 +27,8 @@ export function EnquiryForm({
   source?: string;
   compact?: boolean;
 }) {
-  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const router = useRouter();
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [error, setError] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -43,27 +45,12 @@ export function EnquiryForm({
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json.error || "Something went wrong. Please call us instead.");
-      setStatus("done");
       form.reset();
+      router.push("/thank-you");
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
     }
-  }
-
-  if (status === "done") {
-    return (
-      <div className={`flex flex-col items-center rounded-2xl p-10 text-center ${variant === "light" ? "bg-brand-50" : "bg-white/10"}`} role="status">
-        <CheckCircle2 className={`h-14 w-14 ${variant === "light" ? "text-brand-600" : "text-white"}`} />
-        <p className={`mt-4 font-display text-2xl font-bold ${labelCls[variant]}`}>Thank you!</p>
-        <p className={`mt-2 ${variant === "light" ? "text-ink-500" : "text-white/80"}`}>
-          Your requirement has been received. Our business team will contact you within 24 hours with a tailored proposal.
-        </p>
-        <button type="button" className={`mt-6 ${variant === "light" ? "btn-primary" : "btn-white"}`} onClick={() => setStatus("idle")}>
-          Submit another enquiry
-        </button>
-      </div>
-    );
   }
 
   const L = ({ htmlFor, children }: { htmlFor: string; children: React.ReactNode }) => (

@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
+import { sendCustomerConfirmation, sendOwnerNotification, smtpConfigured } from "@/lib/mail";
 
 const REQUIRED = ["company", "name", "email", "phone", "city", "service", "quantity"] as const;
 const FIELDS = [...REQUIRED, "designation", "message", "role", "experience", "source", "page"] as const;
 type Enquiry = Partial<Record<(typeof FIELDS)[number], string>>;
 
 const clean = (v: unknown, max = 2000) => (typeof v === "string" ? v.trim().slice(0, max) : "");
-const escapeHtml = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 
 // Very small in-memory rate limit (per server instance) to deter abuse.
 const hits = new Map<string, { n: number; t: number }>();
@@ -47,55 +47,39 @@ export async function POST(req: Request) {
   if (!/^[0-9+\-\s()]{8,16}$/.test(data.phone || ""))
     return NextResponse.json({ error: "Please enter a valid phone number." }, { status: 400 });
 
-  const subject =
-    kind === "careers"
-      ? `Job application: ${data.role} — ${data.name} (${data.city})`
-      : `New enquiry: ${data.service} × ${data.quantity} — ${data.company} (${data.city})`;
-  const rows = Object.entries(data).filter(([, v]) => v);
-  const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
-  const html = `<h2>${escapeHtml(subject)}</h2><table cellpadding="6">${rows
-    .map(([k, v]) => `<tr><td><b>${escapeHtml(k)}</b></td><td>${escapeHtml(v!)}</td></tr>`)
-    .join("")}</table>`;
+  const deliveries: Promise<unknown>[] = [];
 
-  const deliveries: Promise<Response>[] = [];
+  // Primary channel: SMTP (Gmail) — notification to the business inbox.
+  if (smtpConfigured()) deliveries.push(sendOwnerNotification(kind, data));
 
-  if (process.env.RESEND_API_KEY && process.env.ENQUIRY_TO_EMAIL) {
-    deliveries.push(
-      fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          from: process.env.ENQUIRY_FROM_EMAIL || "JIS Website <onboarding@resend.dev>",
-          to: process.env.ENQUIRY_TO_EMAIL.split(",").map((s) => s.trim()),
-          reply_to: data.email || undefined,
-          subject,
-          text,
-          html,
-        }),
-      }),
-    );
-  }
-
+  // Optional extra channel: forward the enquiry as JSON (Google Sheets, Zapier, CRM).
   if (process.env.ENQUIRY_WEBHOOK_URL) {
     deliveries.push(
       fetch(process.env.ENQUIRY_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, subject, ...data, receivedAt: new Date().toISOString() }),
+        body: JSON.stringify({ kind, ...data, receivedAt: new Date().toISOString() }),
+      }).then((r) => {
+        if (!r.ok) throw new Error(`webhook ${r.status}`);
       }),
     );
   }
 
   if (!deliveries.length) {
-    console.warn("[enquiry] No delivery channel configured (set RESEND_API_KEY or ENQUIRY_WEBHOOK_URL).\n" + text);
+    console.warn("[enquiry] No delivery channel configured (set SMTP_USER/SMTP_PASS or ENQUIRY_WEBHOOK_URL).", data);
     return NextResponse.json({ ok: true, delivered: false });
   }
 
   const results = await Promise.allSettled(deliveries);
-  const ok = results.some((r) => r.status === "fulfilled" && r.value.ok);
-  if (!ok) {
+  if (!results.some((r) => r.status === "fulfilled")) {
     console.error("[enquiry] delivery failed", results);
     return NextResponse.json({ error: "We couldn't send your enquiry. Please call 0120-4216290." }, { status: 502 });
   }
+
+  // Confirmation to the customer — a failure here must not lose the enquiry.
+  if (smtpConfigured() && data.email) {
+    await sendCustomerConfirmation(kind, data).catch((err) => console.error("[enquiry] confirmation email failed", err));
+  }
+
   return NextResponse.json({ ok: true });
 }

@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Loader2, Send } from "lucide-react";
 import { careerRoles } from "@/lib/careers";
 
-
 export function CareersForm() {
-  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const router = useRouter();
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [error, setError] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -21,22 +22,13 @@ export function CareersForm() {
       });
       const json = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(json.error || "Something went wrong.");
-      setStatus("done");
       form.reset();
+      router.push("/thank-you?type=careers");
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
     }
   }
-
-  if (status === "done")
-    return (
-      <div className="flex flex-col items-center rounded-2xl bg-brand-50 p-10 text-center" role="status">
-        <CheckCircle2 className="h-14 w-14 text-brand-600" />
-        <p className="mt-4 font-display text-2xl font-bold">Application received</p>
-        <p className="mt-2 text-ink-500">Our HR team will call you if your profile matches an open position.</p>
-      </div>
-    );
 
   return (
     <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2">
