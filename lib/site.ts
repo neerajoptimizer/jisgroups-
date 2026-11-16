@@ -56,7 +56,7 @@ export const registrations: { label: string; number: string }[] = [
   { label: "ISO 9001:2015", number: "" },
 ];
 
-export const quantityOptions = ["1 – 5", "6 – 15", "16 – 50", "51 – 100", "100+"];
+export const quantityOptions = ["5 – 10", "10 – 50", "50 – 100", "100+"];
 
 export const clients = [
   { name: "Godrej Properties", logo: "/images/clients/godrej-properties.png" },
