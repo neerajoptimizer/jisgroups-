@@ -3,7 +3,7 @@ import { recaptchaSiteKey, verifyCaptcha } from "@/lib/captcha";
 import { formsubmitEnabled, sendCustomerConfirmation, sendOwnerNotification, sendViaFormSubmit, smtpConfigured } from "@/lib/mail";
 
 const REQUIRED = ["company", "name", "email", "phone", "city", "service", "quantity"] as const;
-const FIELDS = [...REQUIRED, "designation", "message", "role", "experience", "source", "page"] as const;
+const FIELDS = [...REQUIRED, "designation", "message", "source", "page"] as const;
 type Enquiry = Partial<Record<(typeof FIELDS)[number], string>>;
 
 const clean = (v: unknown, max = 2000) => (typeof v === "string" ? v.trim().slice(0, max) : "");
@@ -59,13 +59,11 @@ export async function POST(req: Request) {
       { status: 400 },
     );
 
-  const kind = clean(body.source) === "careers" ? "careers" : "enquiry";
-  const required = kind === "careers" ? (["name", "phone", "city", "role"] as const) : REQUIRED;
 
   const data: Enquiry = {};
   for (const f of FIELDS) data[f] = clean(body[f], f === "message" ? 2000 : 200);
 
-  const missing = required.filter((f) => !data[f]);
+  const missing = REQUIRED.filter((f) => !data[f]);
   if (missing.length) return NextResponse.json({ error: "Please fill in all required fields." }, { status: 400 });
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
     return NextResponse.json({ error: "Please enter a valid email address." }, { status: 400 });
@@ -75,11 +73,11 @@ export async function POST(req: Request) {
   const deliveries: Promise<unknown>[] = [];
 
   // Primary channel: SMTP (Gmail) — notification to the business inbox.
-  if (smtpConfigured()) deliveries.push(sendOwnerNotification(kind, data));
+  if (smtpConfigured()) deliveries.push(sendOwnerNotification(data));
   // Fallback without SMTP credentials: FormSubmit (also auto-replies to the customer).
   else if (formsubmitEnabled())
     deliveries.push(
-      sendViaFormSubmit(kind, data).catch((err: Error) => {
+      sendViaFormSubmit(data).catch((err: Error) => {
         // Before the one-time activation click, don't show customers an error — log it instead.
         if (/activat/i.test(err.message)) return console.error("[enquiry] FormSubmit not activated yet", data);
         throw err;
@@ -92,7 +90,7 @@ export async function POST(req: Request) {
       fetch(process.env.ENQUIRY_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, ...data, receivedAt: new Date().toISOString() }),
+        body: JSON.stringify({ ...data, receivedAt: new Date().toISOString() }),
       }).then((r) => {
         if (!r.ok) throw new Error(`webhook ${r.status}`);
       }),
@@ -112,7 +110,7 @@ export async function POST(req: Request) {
 
   // Confirmation to the customer — a failure here must not lose the enquiry.
   if (smtpConfigured() && data.email) {
-    await sendCustomerConfirmation(kind, data).catch((err) => console.error("[enquiry] confirmation email failed", err));
+    await sendCustomerConfirmation(data).catch((err) => console.error("[enquiry] confirmation email failed", err));
   }
 
   return NextResponse.json({ ok: true });

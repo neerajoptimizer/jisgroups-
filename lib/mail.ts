@@ -37,8 +37,6 @@ const LABELS: Record<string, string> = {
   city: "City / Location",
   service: "Service",
   quantity: "Manpower quantity",
-  role: "Position",
-  experience: "Experience",
   message: "Message",
   page: "Submitted from",
 };
@@ -76,12 +74,9 @@ type Data = Partial<Record<string, string>>;
 const rowsOf = (d: Data) => Object.entries(LABELS).filter(([k]) => d[k]).map(([k, label]) => [label, d[k]!] as [string, string]);
 
 /** Notification to the business inbox. */
-export async function sendOwnerNotification(kind: "enquiry" | "careers", d: Data) {
-  const subject =
-    kind === "careers"
-      ? `New job application: ${d.role} — ${d.name} (${d.city})`
-      : `New enquiry: ${d.service} × ${d.quantity} — ${d.company} (${d.city})`;
-  const heading = kind === "careers" ? "New job application" : "New business enquiry";
+export async function sendOwnerNotification(d: Data) {
+  const subject = `New enquiry: ${d.service} × ${d.quantity} — ${d.company} (${d.city})`;
+  const heading = "New business enquiry";
   const html = layout(
     heading,
     `<p style="margin:0 0 16px;font-size:14px">Received ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })} IST via the website.</p>
@@ -96,30 +91,21 @@ ${d.email ? `&nbsp;<a href="mailto:${esc(d.email)}" style="display:inline-block;
 }
 
 /** Confirmation to the person who filled in the form. */
-export async function sendCustomerConfirmation(kind: "enquiry" | "careers", d: Data) {
+export async function sendCustomerConfirmation(d: Data) {
   if (!d.email) return;
   const first = (d.name || "").split(" ")[0] || "there";
-  const isJob = kind === "careers";
-  const subject = isJob ? `We've received your application — ${site.name}` : `Thank you for your enquiry — ${site.name}`;
-  const intro = isJob
-    ? `Thank you for applying for the <strong>${esc(d.role || "")}</strong> position with ${esc(site.name)}. Our HR team will review your details and call you if your profile matches an open position.`
-    : `Thank you for contacting ${esc(site.name)}. We have received your requirement and our business team will contact you <strong>within 24 hours</strong> with a tailored proposal.`;
-  const summary: [string, string][] = isJob
-    ? ([["Position", d.role], ["Preferred city", d.city], ["Phone", d.phone]] as [string, string | undefined][]).filter((r): r is [string, string] => !!r[1])
-    : ([["Service", d.service], ["Manpower quantity", d.quantity], ["City / Location", d.city], ["Company", d.company]] as [string, string | undefined][]).filter(
-        (r): r is [string, string] => !!r[1],
-      );
+  const subject = `Thank you for your enquiry — ${site.name}`;
+  const intro = `Thank you for contacting ${esc(site.name)}. We have received your requirement and our business team will contact you <strong>within 24 hours</strong> with a tailored proposal.`;
+  const summary = ([["Service", d.service], ["Manpower quantity", d.quantity], ["City / Location", d.city], ["Company", d.company]] as [string, string | undefined][]).filter(
+    (r): r is [string, string] => !!r[1],
+  );
   const html = layout(
-    isJob ? "Application received" : "We've received your enquiry",
+    "We've received your enquiry",
     `<p style="margin:0 0 14px;font-size:15px;line-height:1.6">Dear ${esc(first)},</p>
 <p style="margin:0 0 18px;font-size:15px;line-height:1.6">${intro}</p>
 <p style="margin:0 0 8px;font-size:13px;font-weight:bold;color:#6b6b74;text-transform:uppercase;letter-spacing:1px">Your request</p>
 ${table(summary)}
-<p style="margin:20px 0 0;font-size:15px;line-height:1.6">${
-      isJob
-        ? "Please note: JIS never charges candidates any fee for a job, training or uniform."
-        : `Need to speak to us sooner? Call <a href="${site.phoneHref}" style="color:#d91414;font-weight:bold">${site.phone}</a> (call or <a href="${site.whatsappHref}" style="color:#d91414;font-weight:bold">WhatsApp</a>) or simply reply to this email.`
-    }</p>
+<p style="margin:20px 0 0;font-size:15px;line-height:1.6">Need to speak to us sooner? Call <a href="${site.phoneHref}" style="color:#d91414;font-weight:bold">${site.phone}</a> (call or <a href="${site.whatsappHref}" style="color:#d91414;font-weight:bold">WhatsApp</a>) or simply reply to this email.</p>
 <p style="margin:18px 0 0;font-size:15px;line-height:1.6">Warm regards,<br><strong>Team ${esc(site.name)}</strong></p>`,
   );
   const text = `Dear ${first},\n\n${intro.replace(/<[^>]+>/g, "")}\n\n${summary.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nCall or WhatsApp ${site.phone}, or reply to this email.\n\nTeam ${site.name}`;
@@ -133,22 +119,17 @@ ${table(summary)}
  */
 export const formsubmitEnabled = () => !smtpConfigured() && !process.env.FORMSUBMIT_DISABLED;
 
-export async function sendViaFormSubmit(kind: "enquiry" | "careers", d: Data) {
+export async function sendViaFormSubmit(d: Data) {
   const to = process.env.ENQUIRY_TO_EMAIL || site.emails.find((e) => e.endsWith("@gmail.com")) || site.emails[0];
-  const isJob = kind === "careers";
   const payload: Record<string, string> = {
-    _subject: isJob
-      ? `New job application: ${d.role} — ${d.name} (${d.city})`
-      : `New enquiry: ${d.service} × ${d.quantity} — ${d.company} (${d.city})`,
+    _subject: `New enquiry: ${d.service} × ${d.quantity} — ${d.company} (${d.city})`,
     _template: "table",
     _captcha: "false",
   };
   for (const [k, label] of Object.entries(LABELS)) if (d[k]) payload[label] = d[k]!;
   if (d.email) {
     payload.email = d.email; // FormSubmit sends _autoresponse to this address and sets Reply-To
-    payload._autoresponse = isJob
-      ? `Dear ${d.name}, thank you for applying for the ${d.role} position with ${site.name}. Our HR team will call you if your profile matches an open position. JIS never charges candidates any fee. — Team ${site.name}, ${site.phone}`
-      : `Dear ${d.name}, thank you for contacting ${site.name}. We have received your requirement for ${d.service} (${d.quantity}) in ${d.city}. Our business team will contact you within 24 hours with a tailored proposal. Need us sooner? Call or WhatsApp ${site.phone}. — Team ${site.name}, ${site.legalName}, ${site.address.full}`;
+    payload._autoresponse = `Dear ${d.name}, thank you for contacting ${site.name}. We have received your requirement for ${d.service} (${d.quantity}) in ${d.city}. Our business team will contact you within 24 hours with a tailored proposal. Need us sooner? Call or WhatsApp ${site.phone}. — Team ${site.name}, ${site.legalName}, ${site.address.full}`;
   }
   const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
     method: "POST",

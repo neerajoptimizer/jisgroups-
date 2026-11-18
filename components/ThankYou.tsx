@@ -1,24 +1,15 @@
-"use client";
-
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { ArrowRight, CheckCircle2, Clock, Mail, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { WhatsAppIcon } from "./WhatsApp";
 
-function ThankYouContent({ isJob }: { isJob: boolean }) {
+const next = [
+  { icon: Mail, text: "A confirmation email is on its way to your inbox — check spam if you don't see it." },
+  { icon: Clock, text: "Our business team will contact you within 24 hours." },
+  { icon: Phone, text: "You'll receive staff profiles, cost structure and a deployment plan." },
+];
 
-  const next = isJob
-    ? [
-        { icon: Mail, text: "A confirmation has been sent to your email (if you provided one)." },
-        { icon: Clock, text: "Our HR team reviews every application." },
-        { icon: Phone, text: "We will call you if your profile matches an open position." },
-      ]
-    : [
-        { icon: Mail, text: "A confirmation email is on its way to your inbox — check spam if you don't see it." },
-        { icon: Clock, text: "Our business team will contact you within 24 hours." },
-        { icon: Phone, text: "You'll receive staff profiles, cost structure and a deployment plan." },
-      ];
+export function ThankYou() {
 
   return (
     <section className="section bg-ink-50">
@@ -27,11 +18,9 @@ function ThankYouContent({ isJob }: { isJob: boolean }) {
           <span className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-brand-50">
             <CheckCircle2 className="h-11 w-11 text-brand-600" aria-hidden="true" />
           </span>
-          <h1 className="mt-6 text-3xl font-extrabold sm:text-4xl">{isJob ? "Application received!" : "Thank you! We've received your enquiry."}</h1>
+          <h1 className="mt-6 text-3xl font-extrabold sm:text-4xl">Thank you! We've received your enquiry.</h1>
           <p className="lead mx-auto mt-4 max-w-xl">
-            {isJob
-              ? `Thank you for applying to ${site.name}. JIS never charges candidates any fee for a job, training or uniform.`
-              : `Thank you for choosing ${site.name}. No placement fee. No compliance burden. Just reliable people.`}
+            Thank you for choosing {site.name}. No placement fee. No compliance burden. Just reliable people.
           </p>
 
           <ol className="mx-auto mt-10 max-w-lg space-y-4 text-left">
@@ -54,21 +43,12 @@ function ThankYouContent({ isJob }: { isJob: boolean }) {
             <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer" className="btn bg-[#25D366] text-white hover:-translate-y-0.5">
               <WhatsAppIcon className="h-4 w-4" /> WhatsApp us
             </a>
-            <Link href={isJob ? "/careers" : "/services"} className="btn border border-ink-100 text-ink-900 hover:border-ink-900">
-              {isJob ? "Back to careers" : "Explore our services"} <ArrowRight className="h-4 w-4" />
+            <Link href="/services" className="btn border border-ink-100 text-ink-900 hover:border-ink-900">
+              Explore our services <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </div>
     </section>
   );
-}
-
-/** Reads ?type=careers in the browser so the page itself stays fully static (no server function per visit). */
-export function ThankYou() {
-  return <ThankYouContent isJob={useSearchParams().get("type") === "careers"} />;
-}
-
-export function ThankYouFallback() {
-  return <ThankYouContent isJob={false} />;
 }

@@ -80,7 +80,6 @@ export default function ContactPage() {
       <Faq
         faqs={[
           { q: "How soon will you respond to my enquiry?", a: "Our business team responds within 24 hours with a tailored proposal. For urgent requirements, call us directly on +91 72101 06050." },
-          { q: "I am looking for a job. Whom should I contact?", a: "Please visit our Careers page and submit your details. We are not a placement agency and do not charge any fee from candidates." },
           { q: "Do you offer a free site visit?", a: "Yes. For security and facility management contracts we offer a free site assessment before finalising the proposal." },
         ]}
       />

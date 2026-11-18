@@ -12,7 +12,6 @@ const company = [
   { href: "/about", label: "About Us" },
   { href: "/clients", label: "Our Clients" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/careers", label: "Careers" },
   { href: "/blog", label: "Insights & Blog" },
   { href: "/faq", label: "FAQs" },
   { href: "/contact", label: "Contact Us" },

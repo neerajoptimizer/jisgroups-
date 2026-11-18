@@ -24,7 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     u("/locations", 0.8, "weekly"),
     u("/clients", 0.6),
     u("/gallery", 0.5),
-    u("/careers", 0.6, "weekly"),
     u("/faq", 0.6),
     u("/blog", 0.6, "weekly"),
     u("/privacy-policy", 0.2, "yearly"),

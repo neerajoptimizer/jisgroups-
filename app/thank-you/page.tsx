@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import { ThankYou, ThankYouFallback } from "@/components/ThankYou";
+import { ThankYou } from "@/components/ThankYou";
 
 export const metadata: Metadata = {
   title: "Thank You",
@@ -9,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function ThankYouPage() {
-  return (
-    <Suspense fallback={<ThankYouFallback />}>
-      <ThankYou />
-    </Suspense>
-  );
+  return <ThankYou />;
 }

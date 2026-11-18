@@ -124,7 +124,6 @@ export function Header() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/careers" className="hover:text-white">Careers</Link>
             <Link href="/blog" className="hover:text-white">Insights</Link>
             <Link href="/faq" className="hover:text-white">FAQs</Link>
           </div>
@@ -244,7 +243,6 @@ export function Header() {
                   );
                 })}
                 {[
-                  { href: "/careers", label: "Careers" },
                   { href: "/blog", label: "Insights" },
                   { href: "/faq", label: "FAQs" },
                 ].map((l) => (

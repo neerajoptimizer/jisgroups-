@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
     qualities: [75],
     minimumCacheTTL: 2678400,
   },
+  async redirects() {
+    return [{ source: "/careers", destination: "/", permanent: true }];
+  },
   async headers() {
     return [
       {
